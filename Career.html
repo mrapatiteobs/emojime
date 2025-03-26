@@ -67,20 +67,22 @@
     <div class="content"></div>
     <div class="start-over-icon" onclick="showMessage()"></div>
     <div class="letter-text">You received a letter!</div>
+   
+    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const username = localStorage.getItem('username');
-            const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis'));
-            
-            if (username) {
-                document.getElementById('username').textContent = username;
-            } else {
-                document.getElementById('username').textContent = 'User';
-            }
+    document.addEventListener('DOMContentLoaded', () => {
+        const username = localStorage.getItem('username') || 'User';
+        document.getElementById('username').textContent = username;
 
-            // Future Careers Table with additional entries
-            const careersTable = [
-                { emojis: ['🌀', '💾'], title: 'Quantum Data Sculptor' },
+        const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis')) || [];
+
+        if (selectedEmojis.length === 0) {
+            document.getElementById('careerTitle').textContent = 'Unknown Career';
+            return;
+        }
+
+        const careersTable = [
+            { emojis: ['🌀', '💾'], title: 'Quantum Data Sculptor' },
                 { emojis: ['🛌', '🎨'], title: 'AI-Powered Dream Architect' },
                 { emojis: ['⚽', '🔍'], title: 'Holographic Sports Strategist' },
                 { emojis: ['🧠', '🛠️'], title: 'Neural Interface Designer' },
@@ -160,20 +162,23 @@
                 { emojis: ['🏰', '📽️'], title: 'Holographic History Teacher' },
                 { emojis: ['🥗', '🤖'], title: 'AI-Powered Nutritionist' },
                 { emojis: ['🌕', '⛏️'], title: 'Lunar Mining Specialist' },
-                // Add more career entries as needed
-            ];
+                // Add more career entries as needed    
+        ];
 
-            // Find the career title based on selected emojis
-            const career = careersTable.find(c => 
-                (c.emojis.includes(selectedEmojis[0]) && c.emojis.includes(selectedEmojis[1]))
-            ) || careersTable.find(c => c.emojis.includes(selectedEmojis[0]));
+        // Find the best matching career
+        let career = careersTable.find(c => 
+            selectedEmojis.every(emoji => c.emojis.includes(emoji))
+        ) || careersTable.find(c => 
+            selectedEmojis.some(emoji => c.emojis.includes(emoji))
+        );
 
-            if (career) {
-                document.getElementById('careerTitle').textContent = career.title;
-            } else {
-                document.getElementById('careerTitle').textContent = 'Unknown Career';
-            }
-        });
+        document.getElementById('careerTitle').textContent = career ? career.title : 'Unknown Career';
+    });
+</script>
+
+    
+
+     
 
         function showMessage() {
             const careerTitle = document.getElementById('careerTitle').textContent;
