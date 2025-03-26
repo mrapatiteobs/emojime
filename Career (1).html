@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In the year 2050</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://www.example.com/deep-space-background.jpg'); /* Replace with your deep space background image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            text-align: center;
+            padding: 0 10%; /* Add padding to create more space on the sides */
+        }
+        header {
+            font-size: 2em;
+            color: #00ffcc;
+            text-shadow: 2px 2px #ff00ff;
+            margin-bottom: 20px;
+            margin-top: 20px; /* Add some space before the title */
+        }
+        .content {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            line-height: 2; /* Double spaced lines */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #0d0d0d;
+            color: #00ffcc;
+            border: 2px solid #00ffcc;
+        }
+        button:hover {
+            background-color: #00ffcc;
+            color: #0d0d0d;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> <!-- Font link -->
+</head>
+<body>
+    <header>In the year 2050, <span id="username"></span> is now a world reknowned <span id="careerTitle"></span></header>
+    <div class="content">
+        <p>How to obtain the career title? Let me show you the steps:</p>
+        <ol>
+            <li>Read the 2 emoji selections from the previous page.</li>
+            <li>Scan through the future careers table for a match.</li>
+            <li>Read the 'Career Title' from the table of the corresponding emojis and display it.</li>
+        </ol>
+    </div>
+    <button onclick="startOver()">Start Over</button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const username = localStorage.getItem('username');
+            const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis'));
+            
+            document.getElementById('username').textContent = username;
+
+            // Future Careers Table (sample data)
+            const careersTable = [
+                { emojis: ['🌀', '💾'], title: 'Quantum Data Sculptor' },
+                { emojis: ['🛌', '🎨'], title: 'AI-Powered Dream Architect' },
+                // Add more career entries as needed
+            ];
+
+            // Find the career title based on selected emojis
+            const career = careersTable.find(c => 
+                (c.emojis.includes(selectedEmojis[0]) && c.emojis.includes(selectedEmojis[1]))
+            );
+
+            if (career) {
+                document.getElementById('careerTitle').textContent = career.title;
+            } else {
+                document.getElementById('careerTitle').textContent = 'Unknown Career';
+            }
+        });
+
+        function startOver() {
+            localStorage.clear();
+            window.location.href = 'emoji.html'; // Redirect to the initial page
+        }
+    </script>
+</body>
+</html>
