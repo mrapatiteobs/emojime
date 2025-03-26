@@ -59,6 +59,49 @@
             color: #00ffcc;
             text-shadow: 1px 1px #ff00ff;
         }
+        /* Modal Background */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease-in-out;
+        }
+        /* Modal Content */
+        .modal-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: #00ffcc;
+            font-family: 'Orbitron', sans-serif;
+            max-width: 400px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        /* Close Button */
+        .close-btn {
+            color: #ff00ff;
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            color: #fff;
+        }
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> <!-- Font link -->
 </head>
@@ -67,97 +110,33 @@
     <div class="content"></div>
     <div class="start-over-icon" onclick="showMessage()"></div>
     <div class="letter-text">You received a letter!</div>
-   
-
-<!-- Modal Structure -->
-<div id="messageModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Your Future Message</h2>
-        <p id="careerMessage">This is a placeholder message.</p>
+    
+    <!-- Modal Structure -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Your Future Message</h2>
+            <p id="careerMessage">This is a placeholder message.</p>
+        </div>
     </div>
-</div>
 
-<style>
-    /* Modal Background */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(8px);
-        justify-content: center;
-        align-items: center;
-        transition: opacity 0.3s ease-in-out;
-    }
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const username = localStorage.getItem('username') || 'User';
+            document.getElementById('username').textContent = username;
 
-    /* Modal Content */
-    .modal-content {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        border-radius: 15px;
-        text-align: center;
-        color: #00ffcc;
-        font-family: 'Orbitron', sans-serif;
-        max-width: 400px;
-        box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-        animation: fadeIn 0.5s ease-in-out;
-    }
+            const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis')) || [];
 
-    /* Close Button */
-    .close-btn {
-        color: #ff00ff;
-        float: right;
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-    }
+            if (!Array.isArray(selectedEmojis) || selectedEmojis.length === 0) {
+                document.getElementById('careerTitle').textContent = 'Unknown Career';
+                return;
+            }
 
-    .close-btn:hover {
-        color: #fff;
-    }
-
-    /* Fade-in Animation */
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-</style>
-
-
-
-
-
-    
-
-
-
-
-    
-
-    
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const username = localStorage.getItem('username') || 'User';
-        document.getElementById('username').textContent = username;
-
-        const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis')) || [];
-
-        if (!Array.isArray(selectedEmojis) || selectedEmojis.length === 0) {
-            document.getElementById('careerTitle').textContent = 'Unknown Career';
-            return;
-           
-        }
-
-        const careersTable = [
-            { emojis: ['🌀', '💾'], title: 'Quantum Data Sculptor' },
-            { emojis: ['🛌', '🎨'], title: 'AI-Powered Dream Architect' },
-            { emojis: ['⚽', '🔍'], title: 'Holographic Sports Strategist' },
-         { emojis: ['🧠', '🛠️'], title: 'Neural Interface Designer' },
+            const careersTable = [
+                { emojis: ['🌀', '💾'], title: 'Quantum Data Sculptor' },
+                { emojis: ['🛌', '🎨'], title: 'AI-Powered Dream Architect' },
+                { emojis: ['⚽', '🔍'], title: 'Holographic Sports Strategist' },
+                { emojis: ['🧠', '🛠️'], title: 'Neural Interface Designer' },
                 { emojis: ['🦾', '🫁'], title: 'Cybernetic Organ Engineer' },
                 { emojis: ['🦒', '🕶️'], title: 'Virtual Reality Wildlife Biologist' },
                 { emojis: ['🌌', '🌾'], title: 'Deep Space Agriculturist' },
@@ -235,17 +214,17 @@
                 { emojis: ['🥗', '🤖'], title: 'AI-Powered Nutritionist' },
                 { emojis: ['🌕', '⛏️'], title: 'Lunar Mining Specialist' }
                 // Add more career entries as needed    
-            
-        ];
+            ];
 
-        // Matching logic: check for exact or partial matches
-        let career = careersTable.find(c => 
-            selectedEmojis.every(emoji => c.emojis.includes(emoji))
-        ) || careersTable.find(c => 
-            selectedEmojis.some(emoji => c.emojis.includes(emoji))
-        );
+            // Matching logic: check for exact or partial matches
+            let career = careersTable.find(c => 
+                selectedEmojis.every(emoji => c.emojis.includes(emoji))
+            ) || careersTable.find(c => 
+                selectedEmojis.some(emoji => c.emojis.includes(emoji))
+            );
 
-        document.getElementById('careerTitle').textContent = career ? career.title : 'Unknown Career';
+            document.getElementById('careerTitle').textContent = career ? career.title : 'Unknown Career';
+
 
         // Message list for each career
         const careerMessages = {
@@ -334,7 +313,10 @@
 'Lunar Mining Specialist":	"Hello from the future! I am a Lunar Mining Specialist, an expert in my field. Today, I solved a unique challenge where lunar mining specialist was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to lunar mining specialist—but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!"
 
     const messagesArray = messages.split('\n').map(line => line.split(','));
-        
+
+const message = messagesArray.find(row => row[0] === careerTitle)[1];
+
+alert(message);
         
         };
 
