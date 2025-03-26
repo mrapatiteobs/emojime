@@ -36,9 +36,9 @@
             line-height: 2; /* Double spaced lines */
         }
         .start-over-icon {
-            width: 50px;
-            height: 50px;
-            background-image: url('https://github.com/mrapatiteobs/emojime/blob/main/letter-icon.png');
+            width: 70px;
+            height: 70px;
+            background-image: url('https://github.com/mrapatiteobs/emojime/raw/main/letter-icon.png');
             background-size: cover;
             cursor: pointer;
             animation: glowMove 2s infinite alternate;
@@ -65,7 +65,11 @@
             const username = localStorage.getItem('username');
             const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis'));
             
-            document.getElementById('username').textContent = username;
+            if (username) {
+                document.getElementById('username').textContent = username;
+            } else {
+                document.getElementById('username').textContent = 'User';
+            }
 
             // Future Careers Table with additional entries
             const careersTable = [
