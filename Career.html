@@ -79,6 +79,13 @@
         if (selectedEmojis.length === 0) {
             document.getElementById('careerTitle').textContent = 'Unknown Career';
             return;
+
+
+         console.log("Selected Emojis:", selectedEmojis); // Debugging line
+
+        if (!Array.isArray(selectedEmojis) || selectedEmojis.length === 0) {
+            document.getElementById('careerTitle').textContent = 'Unknown Career';
+            return;    
         }
 
         const careersTable = [
@@ -173,6 +180,13 @@
         );
 
         document.getElementById('careerTitle').textContent = career ? career.title : 'Unknown Career';
+
+
+
+
+        console.log("Matched Career:", career ? career.title : "None"); // Debugging line
+
+    
     });
 </script>
 
