@@ -41,10 +41,23 @@
             font-size: 2em;
             margin: 10px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .emoji:hover, .emoji.selected {
+        .emoji:hover {
             transform: scale(1.5);
+        }
+        .emoji.selected {
+            transform: scale(2);
+            box-shadow: 0 0 20px #00ffcc;
+            animation: glow 1s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px #00ffcc;
+            }
+            to {
+                box-shadow: 0 0 20px #00ffcc;
+            }
         }
         button {
             padding: 10px 20px;
