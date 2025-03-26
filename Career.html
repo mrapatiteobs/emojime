@@ -117,9 +117,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const username = localStorage.getItem('username') || 'User';
+            console.log('Username:', username); // Debug statement
             document.getElementById('username').textContent = username;
 
             const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis')) || [];
+            console.log('Selected Emojis:', selectedEmojis); // Debug statement
 
             if (!Array.isArray(selectedEmojis) || selectedEmojis.length === 0) {
                 document.getElementById('careerTitle').textContent = 'Unknown Career';
@@ -216,11 +218,12 @@
                 selectedEmojis.some(emoji => c.emojis.includes(emoji))
             );
 
+            console.log('Career:', career); // Debug statement
+
             document.getElementById('careerTitle').textContent = career ? career.title : 'Unknown Career';
 
             const careerMessages = {
-
- "Quantum Data Sculptor":	"Hello from the future! I am a Quantum Data Sculptor, an expert in my field. Today, I solved a unique challenge where quantum data sculptor was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to quantum data sculptorâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
+               "Quantum Data Sculptor":	"Hello from the future! I am a Quantum Data Sculptor, an expert in my field. Today, I solved a unique challenge where quantum data sculptor was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to quantum data sculptorâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 "AI-Powered Dream Architect":	"Hello from the future! I am a AI-Powered Dream Architect, an expert in my field. Today, I solved a unique challenge where ai-powered dream architect was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to ai-powered dream architectâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 "Holographic Sports Strategist":	"Hello from the future! I am a Holographic Sports Strategist, an expert in my field. Today, I solved a unique challenge where holographic sports strategist was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to holographic sports strategistâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
                 "Neural Interface Designer":	"Hello from the future! I am a Neural Interface Designer, an expert in my field. Today, I solved a unique challenge where neural interface designer was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to neural interface designerâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
@@ -300,8 +303,7 @@
 "Holographic History Teacher":	"Hello from the future! I am a Holographic History Teacher, an expert in my field. Today, I solved a unique challenge where holographic history teacher was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to holographic history teacher—but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 "AI-Powered Nutritionist":	"Hello from the future! I am a AI-Powered Nutritionist, an expert in my field. Today, I solved a unique challenge where ai-powered nutritionist was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to ai-powered nutritionist—but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 'Lunar Mining Specialist":	"Hello from the future! I am a Lunar Mining Specialist, an expert in my field. Today, I solved a unique challenge where lunar mining specialist was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to lunar mining specialist—but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!"
-        
-                
+ 
                 // Fill in the long list of career messages here
             };
 
@@ -325,4 +327,7 @@
 
 
 
+
+
         
+               
