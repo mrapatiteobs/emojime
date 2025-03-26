@@ -115,19 +115,38 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const username = localStorage.getItem('username') || 'User';
-            console.log('Username:', username); // Debug statement
-            document.getElementById('username').textContent = username;
 
-            const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis')) || [];
-            console.log('Selected Emojis:', selectedEmojis); // Debug statement
 
-            if (!Array.isArray(selectedEmojis) || selectedEmojis.length === 0) {
-                document.getElementById('careerTitle').textContent = 'Unknown Career';
-                return;
-            }
+    document.addEventListener('DOMContentLoaded', () => {
+        const username = localStorage.getItem('username') || 'User';
+        console.log('Username:', username); // Debug statement
+        document.getElementById('username').textContent = username;
 
+        const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis')) || [];
+        console.log('Selected Emojis:', selectedEmojis); // Debug statement
+
+        if (!Array.isArray(selectedEmojis) || selectedEmojis.length === 0) {
+            document.getElementById('careerTitle').textContent = 'Unknown Career';
+            return;
+        }
+
+        const careersTable = [
+            { emojis: ['🌀', '💾'], title: 'Quantum Data Sculptor' },
+            // ... other career entries
+        ];
+
+        let career = careersTable.find(c => 
+            selectedEmojis.every(emoji => c.emojis.includes(emoji))
+        ) || careersTable.find(c => 
+            selectedEmojis.some(emoji => c.emojis.includes(emoji))
+        );
+
+        console.log('Career:', career); // Debug statement
+
+        document.getElementById('careerTitle').textContent = career ? career.title : 'Unknown Career';
+    });
+</script>
+        
             const careersTable = [
                 { emojis: ['🌀', '💾'], title: 'Quantum Data Sculptor' },
                 { emojis: ['🛌', '🎨'], title: 'AI-Powered Dream Architect' },
