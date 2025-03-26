@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagine Your Best Future</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://www.example.com/deep-space-background.jpg'); /* Replace with your deep space background image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            text-align: center;
+        }
+        header {
+            font-size: 2em;
+            color: #00ffcc;
+            text-shadow: 2px 2px #ff00ff;
+            margin-bottom: 20px;
+        }
+        .content {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .emojis {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .emoji {
+            font-size: 2em;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .emoji:hover, .emoji.selected {
+            transform: scale(1.5);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #0d0d0d;
+            color: #00ffcc;
+            border: 2px solid #00ffcc;
+        }
+        button:hover {
+            background-color: #00ffcc;
+            color: #0d0d0d;
+        }
+    </style>
+</head>
+<body>
+    <header>✨ Imagine <span id="username"></span>'s Best Future 🚀</header>
+    <div class="content">
+        <p>Close your eyes and take a deep breath.<br>
+        Picture yourself 10, 20, or even 50 years from now .... living your dream life!<br>
+        Let your mind explore the endless possibilities.</p>
+        <p>🔮 Ask yourself: if I were to describe my passion in 2 different emojis:</p>
+    </div>
+    <div class="emojis">
+        <span class="emoji" onclick="selectEmoji(this)">🌀</span>
+        <span class="emoji" onclick="selectEmoji(this)">💾</span>
+        <span class="emoji" onclick="selectEmoji(this)">🛌</span>
+        <span class="emoji" onclick="selectEmoji(this)">🎨</span>
+        <span class="emoji" onclick="selectEmoji(this)">⚽</span>
+        <span class="emoji" onclick="selectEmoji(this)">🔍</span>
+        <span class="emoji" onclick="selectEmoji(this)">🧠</span>
+        <span class="emoji" onclick="selectEmoji(this)">🛠️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🦾</span>
+        <span class="emoji" onclick="selectEmoji(this)">🫁</span>
+        <span class="emoji" onclick="selectEmoji(this)">🦒</span>
+        <span class="emoji" onclick="selectEmoji(this)">🕶️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌌</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌾</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌐</span>
+        <span class="emoji" onclick="selectEmoji(this)">⚔️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🎼</span>
+        <span class="emoji" onclick="selectEmoji(this)">🖥️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🏗️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🪐</span>
+        <span class="emoji" onclick="selectEmoji(this)">🏙️</span>
+        <span class="emoji" onclick="selectEmoji(this)">📊</span>
+        <span class="emoji" onclick="selectEmoji(this)">🦠</span>
+        <span class="emoji" onclick="selectEmoji(this)">🩺</span>
+        <span class="emoji" onclick="selectEmoji(this)">🍣</span>
+        <span class="emoji" onclick="selectEmoji(this)">🔬</span>
+        <span class="emoji" onclick="selectEmoji(this)">☀️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🚁</span>
+        <span class="emoji" onclick="selectEmoji(this)">🕵️‍♂️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🎭</span>
+        <span class="emoji" onclick="selectEmoji(this)">🏀</span>
+        <span class="emoji" onclick="selectEmoji(this)">🛰️</span>
+        <span class="emoji" onclick="selectEmoji(this)">📖</span>
+        <span class="emoji" onclick="selectEmoji(this)">🖨️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🦴</span>
+        <span class="emoji" onclick="selectEmoji(this)">🚀</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌋</span>
+        <span class="emoji" onclick="selectEmoji(this)">🔒</span>
+        <span class="emoji" onclick="selectEmoji(this)">📡</span>
+        <span class="emoji" onclick="selectEmoji(this)">👗</span>
+        <span class="emoji" onclick="selectEmoji(this)">🕊️</span>
+        <span class="emoji" onclick="selectEmoji(this)">💪</span>
+        <span class="emoji" onclick="selectEmoji(this)">🤖</span>
+        <span class="emoji" onclick="selectEmoji(this)">🎮</span>
+        <span class="emoji" onclick="selectEmoji(this)">🧩</span>
+        <span class="emoji" onclick="selectEmoji(this)">🕵️‍♀️</span>
+        <span class="emoji" onclick="selectEmoji(this)">💎</span>
+        <span class="emoji" onclick="selectEmoji(this)">🛰️</span>
+        <span class="emoji" onclick="selectEmoji(this)">♻️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌊</span>
+        <span class="emoji" onclick="selectEmoji(this)">🛩️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🐕‍🦺</span>
+        <span class="emoji" onclick="selectEmoji(this)">🧬</span>
+        <span class="emoji" onclick="selectEmoji(this)">✏️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🚘</span>
+        <span class="emoji" onclick="selectEmoji(this)">👤</span>
+        <span class="emoji" onclick="selectEmoji(this)">📀</span>
+        <span class="emoji" onclick="selectEmoji(this)">🛸</span>
+        <span class="emoji" onclick="selectEmoji(this)">🚄</span>
+        <span class="emoji" onclick="selectEmoji(this)">⚙️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🏡</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌳</span>
+        <span class="emoji" onclick="selectEmoji(this)">🎬</span>
+        <span class="emoji" onclick="selectEmoji(this)">🤯</span>
+        <span class="emoji" onclick="selectEmoji(this)">👂</span>
+        <span class="emoji" onclick="selectEmoji(this)">🎤</span>
+        <span class="emoji" onclick="selectEmoji(this)">🎧</span>
+        <span class="emoji" onclick="selectEmoji(this)">🔄</span>
+        <span class="emoji" onclick="selectEmoji(this)">🫀</span>
+        <span class="emoji" onclick="selectEmoji(this)">🤝</span>
+        <span class="emoji" onclick="selectEmoji(this)">⏳</span>
+        <span class="emoji" onclick="selectEmoji(this)">👁️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🐾</span>
+        <span class="emoji" onclick="selectEmoji(this)">👴</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌿</span>
+        <span class="emoji" onclick="selectEmoji(this)">🔊</span>
+        <span class="emoji" onclick="selectEmoji(this)">⛈️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🦓</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌍</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌩️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌺</span>
+        <span class="emoji" onclick="selectEmoji(this)">🐠</span>
+        <span class="emoji" onclick="selectEmoji(this)">💖</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌦️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🐶</span>
+        <span class="emoji" onclick="selectEmoji(this)">❤️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🚜</span>
+        <span class="emoji" onclick="selectEmoji(this)">🏡</span>
+        <span class="emoji" onclick="selectEmoji(this)">🦁</span>
+        <span class="emoji" onclick="selectEmoji(this)">🦜</span>
+        <span class="emoji" onclick="selectEmoji(this)">🦌</span>
+        <span class="emoji" onclick="selectEmoji(this)">🛡️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🥦</span>
+        <span class="emoji" onclick="selectEmoji(this)">💧</span>
+        <span class="emoji" onclick="selectEmoji(this)">👵</span>
+        <span class="emoji" onclick="selectEmoji(this)">🕰️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌍</span>
+        <span class="emoji" onclick="selectEmoji(this)">⚖️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🏛️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌱</span>
+        <span class="emoji" onclick="selectEmoji(this)">💃</span>
+        <span class="emoji" onclick="selectEmoji(this)">👶</span>
+        <span class="emoji" onclick="selectEmoji(this)">🥹</span>
+        <span class="emoji" onclick="selectEmoji(this)">📜</span>
+        <span class="emoji" onclick="selectEmoji(this)">🏺</span>
+        <span class="emoji" onclick="selectEmoji(this)">🏙️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌋</span>
+        <span class="emoji" onclick="selectEmoji(this)">⚡</span>
+        <span class="emoji" onclick="selectEmoji(this)">☢️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🏰</span>
+        <span class="emoji" onclick="selectEmoji(this)">📽️</span>
+        <span class="emoji" onclick="selectEmoji(this)">🥗</span>
+        <span class="emoji" onclick="selectEmoji(this)">🌕</span>
+        <span class="emoji" onclick="selectEmoji(this)">⛏️</span>
+    </div>
+    <button onclick="saveSelection()">Next</button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const username = localStorage.getItem('username');
+            document.getElementById('username').textContent = username;
+        });
+
+        const selectedEmojis = [];
+
+        function selectEmoji(element) {
+            if (selectedEmojis.length < 2 || element.classList.contains('selected')) {
+                element.classList.toggle('selected');
+                const emoji = element.textContent;
+                if (element.classList.contains('selected')) {
+                    selectedEmojis.push(emoji);
+                } else {
+                    const index = selectedEmojis.indexOf(emoji);
+                    if (index > -1) {
+                        selectedEmojis.splice(index, 1);
+                    }
+                }
+            }
+        }
+
+        function saveSelection() {
+            if (selectedEmojis.length === 2) {
+                localStorage.setItem('selectedEmojis', JSON.stringify(selectedEmojis));
+                window.location.href = 'nextpage.html'; // Replace with the actual next page URL
+            } else {
+                alert('Please select exactly 2 emojis.');
+            }
+        }
+    </script>
+</body>
+</html>
