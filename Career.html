@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>In the year 2050</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #0d0d0d;
@@ -15,25 +16,24 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-image: url('https://www.example.com/deep-space-background.jpg'); /* Replace with your deep space background image URL */
+            background-image: url('https://www.example.com/deep-space-background.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
             text-align: center;
-            padding: 0 10%; /* Add padding to create more space on the sides */
+            padding: 0 10%;
         }
         header {
             font-size: 2em;
             color: #00ffcc;
             text-shadow: 2px 2px #ff00ff;
-            margin-bottom: 20px;
-            margin-top: 20px; /* Add some space before the title */
+            margin: 20px 0;
         }
         .content {
             font-size: 1.2em;
             margin-bottom: 20px;
-            line-height: 2; /* Double spaced lines */
+            line-height: 2;
         }
         .start-over-icon {
             width: 70px;
@@ -59,7 +59,6 @@
             color: #00ffcc;
             text-shadow: 1px 1px #ff00ff;
         }
-        /* Modal Background */
         .modal {
             display: none;
             position: fixed;
@@ -74,7 +73,6 @@
             align-items: center;
             transition: opacity 0.3s ease-in-out;
         }
-        /* Modal Content */
         .modal-content {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
@@ -86,7 +84,6 @@
             box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
             animation: fadeIn 0.5s ease-in-out;
         }
-        /* Close Button */
         .close-btn {
             color: #ff00ff;
             float: right;
@@ -97,21 +94,18 @@
         .close-btn:hover {
             color: #fff;
         }
-        /* Fade-in Animation */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> <!-- Font link -->
 </head>
 <body>
-    <header>In the year 2050, <span id="username"></span> is now a world reknowned <span id="careerTitle"></span></header>
+    <header>In the year 2050, <span id="username"></span> is now a world renowned <span id="careerTitle"></span></header>
     <div class="content"></div>
     <div class="start-over-icon" onclick="showMessage()"></div>
     <div class="letter-text">You received a letter!</div>
-    
-    <!-- Modal Structure -->
+
     <div id="messageModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -216,7 +210,6 @@
                 // Add more career entries as needed    
             ];
 
-            // Matching logic: check for exact or partial matches
             let career = careersTable.find(c => 
                 selectedEmojis.every(emoji => c.emojis.includes(emoji))
             ) || careersTable.find(c => 
@@ -225,9 +218,8 @@
 
             document.getElementById('careerTitle').textContent = career ? career.title : 'Unknown Career';
 
-            // Message list for each career
             const careerMessages = {
- "Quantum Data Sculptor":	"Hello from the future! I am a Quantum Data Sculptor, an expert in my field. Today, I solved a unique challenge where quantum data sculptor was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to quantum data sculptorâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
+               "Quantum Data Sculptor":	"Hello from the future! I am a Quantum Data Sculptor, an expert in my field. Today, I solved a unique challenge where quantum data sculptor was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to quantum data sculptorâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 "AI-Powered Dream Architect":	"Hello from the future! I am a AI-Powered Dream Architect, an expert in my field. Today, I solved a unique challenge where ai-powered dream architect was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to ai-powered dream architectâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 "Holographic Sports Strategist":	"Hello from the future! I am a Holographic Sports Strategist, an expert in my field. Today, I solved a unique challenge where holographic sports strategist was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to holographic sports strategistâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
                 "Neural Interface Designer":	"Hello from the future! I am a Neural Interface Designer, an expert in my field. Today, I solved a unique challenge where neural interface designer was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to neural interface designerâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
@@ -307,12 +299,10 @@
 "Holographic History Teacher":	"Hello from the future! I am a Holographic History Teacher, an expert in my field. Today, I solved a unique challenge where holographic history teacher was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to holographic history teacher—but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 "AI-Powered Nutritionist":	"Hello from the future! I am a AI-Powered Nutritionist, an expert in my field. Today, I solved a unique challenge where ai-powered nutritionist was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to ai-powered nutritionist—but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 'Lunar Mining Specialist":	"Hello from the future! I am a Lunar Mining Specialist, an expert in my field. Today, I solved a unique challenge where lunar mining specialist was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to lunar mining specialist—but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!"
-
                 
-                // Add more messages as needed
+                // Add more messages as needed 
             };
 
-            // Function to show the message
             function showMessage() {
                 const careerTitle = document.getElementById('careerTitle').textContent;
                 const message = careerMessages[careerTitle] || "No message found for this career.";
@@ -320,12 +310,10 @@
                 document.getElementById('messageModal').style.display = 'flex';
             }
 
-            // Function to close the modal
             function closeModal() {
                 document.getElementById('messageModal').style.display = 'none';
             }
 
-            // Attach click event to the letter icon
             document.querySelector('.start-over-icon').addEventListener('click', showMessage);
             document.querySelector('.close-btn').addEventListener('click', closeModal);
         });
@@ -333,3 +321,5 @@
 </body>
 </html>
 
+
+           
