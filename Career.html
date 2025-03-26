@@ -35,18 +35,23 @@
             margin-bottom: 20px;
             line-height: 2; /* Double spaced lines */
         }
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            margin-top: 20px;
+        .start-over-icon {
+            width: 50px;
+            height: 50px;
+            background-image: url('https://github.com/mrapatiteobs/emojime/blob/main/letter-icon.png');
+            background-size: cover;
             cursor: pointer;
-            background-color: #0d0d0d;
-            color: #00ffcc;
-            border: 2px solid #00ffcc;
+            animation: glowMove 2s infinite alternate;
         }
-        button:hover {
-            background-color: #00ffcc;
-            color: #0d0d0d;
+        @keyframes glowMove {
+            0% {
+                transform: translateY(0);
+                box-shadow: 0 0 10px #00ffcc;
+            }
+            100% {
+                transform: translateY(-20px);
+                box-shadow: 0 0 20px #00ffcc;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> <!-- Font link -->
@@ -54,7 +59,7 @@
 <body>
     <header>In the year 2050, <span id="username"></span> is now a world reknowned <span id="careerTitle"></span></header>
     <div class="content"></div>
-    <button onclick="startOver()">Start Over</button>
+    <div class="start-over-icon" onclick="startOver()"></div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const username = localStorage.getItem('username');
