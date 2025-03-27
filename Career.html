@@ -299,16 +299,17 @@ document.getElementById('letterIcon').addEventListener('click', function() {
 
 
      
-  // Get the stored username
-window.onload = function() {
+
+
+
+ window.onload = function() {
     let username = localStorage.getItem("username");
     if (username) {
-        document.getElementById("displayUsername").innerText = `Welcome, ${username}!`;
+        document.getElementById("username").innerText = username;
     } else {
         window.location.href = "index.html"; // Redirect if no username found
     }
 };
-
 
 
     </script>
