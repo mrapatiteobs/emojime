@@ -1,4 +1,72 @@
-
+<html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>In the year 2050</title>
+     <style>
+         body {
+             background-color: #0d0d0d;
+             color: #ffffff;
+             font-family: 'Orbitron', sans-serif;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             height: 100vh;
+             margin: 0;
+             background-image: url('https://www.example.com/deep-space-background.jpg'); /* Replace with your deep space background image URL */
+             background-size: cover;
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-position: center;
+             text-align: center;
+             padding: 0 10%; /* Add padding to create more space on the sides */
+         }
+         header {
+             font-size: 2em;
+             color: #00ffcc;
+             text-shadow: 2px 2px #ff00ff;
+             margin-bottom: 20px;
+             margin-top: 20px; /* Add some space before the title */
+         }
+         .content {
+             font-size: 1.2em;
+             margin-bottom: 20px;
+             line-height: 2; /* Double spaced lines */
+         }
+         .start-over-icon {
+             width: 70px;
+             height: 70px;
+             background-image: url('https://github.com/mrapatiteobs/emojime/raw/main/letter-icon.png');
+             background-size: cover;
+             cursor: pointer;
+             animation: glowMove 2s infinite alternate;
+         }
+         @keyframes glowMove {
+             0% {
+                 transform: translateY(0);
+                 box-shadow: 0 0 10px #00ffcc;
+             }
+             100% {
+                 transform: translateY(-20px);
+                 box-shadow: 0 0 20px #00ffcc;
+             }
+         }
+         .letter-text {
+             margin-top: 10px;
+             font-size: 1.2em;
+             color: #00ffcc;
+             text-shadow: 1px 1px #ff00ff;
+         }
+     </style>
+     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> <!-- Font link -->
+ </head>
+ <body>
+     <header>In the year 2050, <span id="username"></span> is now a world reknowned <span id="careerTitle"></span></header>
+     <div class="content"></div>
+     <div class="start-over-icon" onclick="showMessage()"></div>
+     <div class="letter-text">You received a letter!</div>
+ 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const username = localStorage.getItem('username') || 'User';
