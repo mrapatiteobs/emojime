@@ -66,6 +66,15 @@
      <div class="content"></div>
      <div class="start-over-icon" onclick="showMessage()"></div>
      <div class="letter-text">You received a letter!</div>
+
+  <!-- Letter Icon -->
+    <img src="path/to/letter-icon.png" alt="Letter Icon" id="letterIcon" style="cursor: pointer;">
+
+    <!-- Popup Container -->
+    <div id="popupContainer" class="popup">
+        <span class="close" id="closePopup">&times;</span>
+        <p id="popupMessage"></p>
+    </div>
  
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -259,21 +268,28 @@
  
         };
 
-        function showMessage() {
-            const careerTitle = document.getElementById('careerTitle').textContent;
-            const message = careerMessages[careerTitle] || "No message found for this career.";
-            document.getElementById('careerMessage').textContent = message;
-            document.getElementById('messageModal').style.display = 'flex';
-        }
+        
 
-        function closeModal() {
-            document.getElementById('messageModal').style.display = 'none';
-        }
 
-        document.querySelector('.start-over-icon').addEventListener('click', showMessage);
-        document.querySelector('.close-btn').addEventListener('click', closeModal);
+  function showMessage(careertitle) {
+        const message = careermessages[careertitle];
+        if (message) {
+            document.getElementById('popupMessage').innerText = message;
+            document.getElementById('popupContainer').style.display = 'block';
+        } else {
+            alert('No message found for the selected career title.');
+        }
+    }
+
+    document.getElementById('letterIcon').addEventListener('click', function() {
+        const selectedCareer = "Engineer"; // Replace this with actual selected career title
+        showMessage(selectedCareer);
     });
 
+    document.getElementById('closePopup').addEventListener('click', function() {
+        document.getElementById('popupContainer').style.display = 'none';
+    });
+ 
 
   // Get the stored username
 window.onload = function() {
