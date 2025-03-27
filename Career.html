@@ -50,33 +50,55 @@ img#letterIcon {
     margin-top: 10px;
 }
 
-/* Popup Box Styling */
 .popup {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.9);
+    background: #111; /* Dark, futuristic email background */
     padding: 20px;
-    width: 35%; /* Slightly smaller for better fit */
-    text-align: center;
-    font-size: 1em;
-    font-family: 'Exo', sans-serif;
+    width: 50%;
+    max-width: 500px;
+    font-family: 'Courier New', monospace; /* Monospace for an email feel */
     color: #ffffff;
-    border: 3px solid #00ffcc;
-    box-shadow: 0 0 20px #00ffcc;
-    text-shadow: 1px 1px #00ffcc;
-    border-radius: 5px; /* More square */
+    border: 2px solid #00ffcc;
+    box-shadow: 0 0 15px #00ffcc;
+    text-align: left; /* Align like an email */
+    border-radius: 5px;
 }
 
+/* Email-like structure */
+.popup-header {
+    font-weight: bold;
+    color: #00ffcc;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #00ffcc;
+    padding-bottom: 5px;
+}
+
+.popup-body {
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.popup-footer {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #cccccc;
+}
+
+/* Close button */
 .close {
     position: absolute;
-    top: 5px;
-    right: 10px;
+    top: 10px;
+    right: 15px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
+    color: #ff00ff;
 }
+
+
 
      
      </style>
