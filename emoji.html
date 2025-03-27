@@ -5,80 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imagine Your Best Future</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #ffffff;
-           
-            font-family: 'Exo', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-             background-image: url('https://raw.githubusercontent.com/mrapatiteobs/emojime/430b388dfab577cad50dbf9b3b61be7c740fb121/background.jpg');
-           background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            text-align: center;
-            padding: 0 10%;
+ 
+
+<style>
+    body {
+        background-color: #0d0d0d;
+        color: #ffffff;
+        font-family: 'Exo', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw; /* Ensures full width */
+        margin: 0;
+        padding: 0;
+        background-image: url('https://raw.githubusercontent.com/mrapatiteobs/emojime/430b388dfab577cad50dbf9b3b61be7c740fb121/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        text-align: center;
+        overflow: hidden; /* Prevents scrolling issues */
+    }
+
+    header {
+        font-size: 1.6em;
+        font-family: 'Exo', sans-serif;
+        color: #00ffcc;
+        text-shadow: 2px 2px #ff00ff;
+        margin: 10px 0; /* Reduce margin for better mobile fit */
+    }
+
+    .content {
+        font-size: 1.1em;
+        margin-bottom: 10px; /* Reduce spacing */
+        line-height: 1.4;
+        max-width: 90%; /* Keeps text within screen */
+    }
+
+    .emojis {
+        display: flex; /* Switch from grid to flex for better mobile layout */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .emoji {
+        font-size: 1.8em; /* Slightly smaller for mobile */
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .emoji:hover {
+        transform: scale(1.3);
+    }
+
+    .emoji.selected {
+        transform: scale(1.7);
+        box-shadow: 0 0 15px #00ffcc;
+        animation: glow 1s infinite alternate;
+    }
+
+    @keyframes glow {
+        from {
+            box-shadow: 0 0 10px #00ffcc;
         }
-        header {
-            font-size: 1.6em;
-            font-family: 'Exo', sans-serif;
-            color: #00ffcc;
-            text-shadow: 2px 2px #ff00ff;
-            margin: 20px 0;
-        }
-        .content {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        .emojis {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-            gap: 20px;
-            justify-items: center;
-            width: 100%;
-        }
-        .emoji {
-            font-size: 2em;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .emoji:hover {
-            transform: scale(1.5);
-        }
-        .emoji.selected {
-            transform: scale(2);
+        to {
             box-shadow: 0 0 20px #00ffcc;
-            animation: glow 1s infinite alternate;
         }
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 10px #00ffcc;
-            }
-            to {
-                box-shadow: 0 0 20px #00ffcc;
-            }
+    }
+
+    button {
+        padding: 8px 15px; /* Smaller padding for mobile */
+        font-size: 1em;
+        margin-top: 10px; /* Reduce spacing */
+        cursor: pointer;
+        background-color: #0d0d0d;
+        color: #00ffcc;
+        border: 2px solid #00ffcc;
+        width: 80%; /* Responsive button width */
+        max-width: 250px; /* Prevents button from being too large */
+    }
+
+    button:hover {
+        background-color: #00ffcc;
+        color: #0d0d0d;
+    }
+
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+        body {
+            height: 100vh;
+            padding: 5%; /* Ensures space around elements */
+            overflow-y: auto; /* Allows scrolling if needed */
         }
-        button {
-            padding: 10px 20px;
+
+        header {
+            font-size: 1.4em; /* Slightly smaller for better fit */
+        }
+
+        .content {
             font-size: 1em;
-            margin-top: 20px;
-            cursor: pointer;
-            background-color: #0d0d0d;
-            color: #00ffcc;
-            border: 2px solid #00ffcc;
+            margin-bottom: 8px;
+            max-width: 95%;
         }
-        button:hover {
-            background-color: #00ffcc;
-            color: #0d0d0d;
+
+        .emoji {
+            font-size: 1.5em; /* Smaller emojis for better fit */
         }
-    </style>
+
+        button {
+            font-size: 0.9em;
+            padding: 6px 12px;
+        }
+    }
+</style>
+
+
+
+
+
 </head>
 <body>
     <header>✨ Imagine <span id="username"></span>'s Best Future ✨</header>
