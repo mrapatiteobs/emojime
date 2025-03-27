@@ -227,11 +227,6 @@ careersTable.forEach(c => {
 document.getElementById('careerTitle').textContent = bestCareer ? bestCareer.title : 'Unknown Career';
 
 
-     
-        console.log('Career:', career); // Debug statement
-
-        document.getElementById('careerTitle').textContent = career ? career.title : 'Unknown Career';
-
         const careerMessages = {
              "Quantum Data Sculptor":	"Hello from the future! I am a Quantum Data Sculptor, an expert in my field. Today, I solved a unique challenge where quantum data sculptor was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to quantum data sculpture through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 "AI-Powered Dream Architect":	"Hello from the future! I am a AI-Powered Dream Architect, an expert in my field. Today, I solved a unique challenge where ai-powered dream architect was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to ai-powered dream architectâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
@@ -354,12 +349,18 @@ document.getElementById('letterIcon').addEventListener('click', function() {
     }
 };
 
-
- function showMessage(careerTitle) {
+function showMessage(careerTitle) {
     const message = careerMessages[careerTitle] || "Welcome to the future! Your career is truly groundbreaking. Keep pushing the boundaries!";
     document.getElementById('popupMessage').innerText = message;
     document.getElementById('popupContainer').style.display = 'block';
 }
+
+document.getElementById('letterIcon').addEventListener('click', function() {
+    const selectedCareer = document.getElementById('careerTitle').textContent.trim();
+    showMessage(selectedCareer);
+});
+
+
 
 
     </script>
