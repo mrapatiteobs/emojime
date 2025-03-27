@@ -277,7 +277,7 @@
 
 
   function showMessage(careertitle) {
-        const message = careermessages[careertitle];
+        const message = careerMessages[careertitle];
         if (message) {
             document.getElementById('popupMessage').innerText = message;
             document.getElementById('popupContainer').style.display = 'block';
@@ -286,16 +286,19 @@
         }
     }
 
-    document.getElementById('letterIcon').addEventListener('click', function() {
-        const selectedCareer = "Engineer"; // Replace this with actual selected career title
-        showMessage(selectedCareer);
     });
 
     document.getElementById('closePopup').addEventListener('click', function() {
         document.getElementById('popupContainer').style.display = 'none';
     });
  
+document.getElementById('letterIcon').addEventListener('click', function() {
+    const selectedCareer = document.getElementById('careerTitle').textContent.trim();
+    showMessage(selectedCareer);
+});
 
+
+     
   // Get the stored username
 window.onload = function() {
     let username = localStorage.getItem("username");
