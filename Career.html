@@ -55,7 +55,7 @@ header {
 
 .letter-text {
     font-size: 1em; /* Reduce text size */
-    margin-top: 15px;
+    margin-top: 30px;
     color: #00ffcc;
     text-shadow: 1px 1px #ff00ff;
 }
@@ -63,7 +63,7 @@ header {
 img#letterIcon {
     width: 40px; /* Make icon much smaller */
     height: 30px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .popup {
@@ -126,7 +126,24 @@ img#letterIcon {
     color: #ff00ff;
 }
 
+/* Vibrating animation for "Message Received!" */
+        @keyframes vibrate {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+            100% { transform: translate(0, 0); }
+        }
 
+        .letter-text {
+            display: inline-block;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+            animation: vibrate 0.2s infinite alternate; /* Continuous vibration */
+        }
 
      
      </style>
@@ -141,7 +158,7 @@ img#letterIcon {
     <span id="careerTitle"></span> <br>
 </header>   
   
-     <div class="letter-text">You received a letter!</div>
+     <div class="letter-text">(1) Message Received! </div>
 
   <!-- Letter Icon -->
   
