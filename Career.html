@@ -59,6 +59,32 @@
              color: #00ffcc;
              text-shadow: 1px 1px #ff00ff;
          }
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ffcc;
+    color: #ffffff;
+    width: 50%;
+    text-align: center;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+
+
+      
      </style>
      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> <!-- Font link -->
  </head>
@@ -187,12 +213,27 @@
             selectedEmojis.some(emoji => c.emojis.includes(emoji))
         );
 
+let bestCareer = null;
+let bestMatchCount = 0;
+
+careersTable.forEach(c => {
+    let matchCount = selectedEmojis.filter(emoji => c.emojis.includes(emoji)).length;
+    if (matchCount > bestMatchCount) {
+        bestCareer = c;
+        bestMatchCount = matchCount;
+    }
+});
+
+document.getElementById('careerTitle').textContent = bestCareer ? bestCareer.title : 'Unknown Career';
+
+
+     
         console.log('Career:', career); // Debug statement
 
         document.getElementById('careerTitle').textContent = career ? career.title : 'Unknown Career';
 
         const careerMessages = {
-             "Quantum Data Sculptor":	"Hello from the future! I am a Quantum Data Sculptor, an expert in my field. Today, I solved a unique challenge where quantum data sculptor was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to quantum data sculptorâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
+             "Quantum Data Sculptor":	"Hello from the future! I am a Quantum Data Sculptor, an expert in my field. Today, I solved a unique challenge where quantum data sculptor was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to quantum data sculpture through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 "AI-Powered Dream Architect":	"Hello from the future! I am a AI-Powered Dream Architect, an expert in my field. Today, I solved a unique challenge where ai-powered dream architect was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to ai-powered dream architectâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
 "Holographic Sports Strategist":	"Hello from the future! I am a Holographic Sports Strategist, an expert in my field. Today, I solved a unique challenge where holographic sports strategist was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to holographic sports strategistâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
                 "Neural Interface Designer":	"Hello from the future! I am a Neural Interface Designer, an expert in my field. Today, I solved a unique challenge where neural interface designer was crucial in advancing human progress. One of the greatest hurdles I faced was overcoming a futuristic problem related to neural interface designerâ€”but through persistence and innovation, I succeeded. Remember, every step you take today is building the foundation for this incredible journey. Stay curious, embrace challenges, and never stop learning!",
@@ -312,6 +353,13 @@ document.getElementById('letterIcon').addEventListener('click', function() {
         window.location.href = "index.html"; // Redirect if no username found
     }
 };
+
+
+ function showMessage(careerTitle) {
+    const message = careerMessages[careerTitle] || "Welcome to the future! Your career is truly groundbreaking. Keep pushing the boundaries!";
+    document.getElementById('popupMessage').innerText = message;
+    document.getElementById('popupContainer').style.display = 'block';
+}
 
 
     </script>
