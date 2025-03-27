@@ -273,11 +273,24 @@
         document.querySelector('.start-over-icon').addEventListener('click', showMessage);
         document.querySelector('.close-btn').addEventListener('click', closeModal);
     });
-</script>
+
+
+  // Get the stored username
+window.onload = function() {
+    let username = localStorage.getItem("username");
+    if (username) {
+        document.getElementById("displayUsername").innerText = `Welcome, ${username}!`;
+    } else {
+        window.location.href = "index.html"; // Redirect if no username found
+    }
+};
 
 
 
+  </script>
 
+  
+</body>
 
 
 
