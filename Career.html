@@ -224,21 +224,24 @@
     "Lunar Mining Specialist": "Hey, space pioneer! Today, I extracted rare minerals from the moon that revolutionized technology on Earth. Now, lunar resources power innovation! Funniest moment? A mining bot started stacking rocks into smiley faces. Younger me, there’s a whole universe of resources—keep reaching for them! Take care, 2025-me. The moon is just the beginning!"
     };
 
-    document.addEventListener('DOMContentLoaded', () => {
-        // Retrieve username
-        const username = localStorage.getItem('username') || 'User';
-        document.getElementById('username').textContent = username;
 
-        // Retrieve selected emojis
-        const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis')) || [];
-        if (!Array.isArray(selectedEmojis) || selectedEmojis.length === 0) {
-            document.getElementById('careerTitle').textContent = 'Unknown Career';
-            return;
-        }
 
-        // Example careers table (your full list would be here)
-        const careersTable = [
-         { emojis: ['🎨', '🧠'], title: 'Art-Neural Innovator' },
+document.addEventListener('DOMContentLoaded', () => {
+    // Retrieve username
+    const username = localStorage.getItem('username') || 'User';
+    document.getElementById('username').textContent = username;
+
+    // Retrieve selected emojis; if empty, set a default value
+    let selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis')) || [];
+    if (!Array.isArray(selectedEmojis) || selectedEmojis.length === 0) {
+        // Set a default array so that the code continues to run
+        selectedEmojis = ['🎨', '🧠']; // Example default emojis
+        localStorage.setItem('selectedEmojis', JSON.stringify(selectedEmojis));
+    }
+
+    // Process the careersTable based on selectedEmojis
+    const careersTable = [
+           { emojis: ['🎨', '🧠'], title: 'Art-Neural Innovator' },
     { emojis: ['🎨', '🛠️'], title: 'Art Mechanic Visionary' },
     { emojis: ['🎨', '⚔️'], title: 'Art Combat Strategist' },
     { emojis: ['🎨', '🎼'], title: 'Art Symphony Curator' },
@@ -1038,46 +1041,49 @@
     { emojis: ['💎', '❤️'], title: 'Gem-Infused Heartbeat Integrator' },
     { emojis: ['🛩️', '🌍'], title: 'Aero-Global Network Engineer' },
     { emojis: ['🧬', '⚖️'], title: 'Genomic Legal Systems Architect' }
-         
-                // Add more career entries as needed   
-        ];
+    ];
 
-        // Determine the best matching career (simplified logic)
-        let bestCareer = careersTable[0];
-        careersTable.forEach(c => {
-            let matchCount = selectedEmojis.filter(emoji => c.emojis.includes(emoji)).length;
-            if (matchCount > (bestCareer.matchCount || 0)) {
-                bestCareer = c;
-                bestCareer.matchCount = matchCount;
-            }
-        });
-        document.getElementById('careerTitle').textContent = bestCareer ? bestCareer.title : 'Unknown Career';
-
-        // Consolidated showMessage function
-        function showMessage(careerTitle) {
-            const message = careerMessages[careerTitle] || "Welcome to the future! Your career is truly groundbreaking. Keep pushing the boundaries!";
-            document.getElementById('popupMessage').innerText = message;
-            document.getElementById('popupContainer').style.display = 'block';
+    let bestCareer = careersTable[0];
+    careersTable.forEach(c => {
+        let matchCount = selectedEmojis.filter(emoji => c.emojis.includes(emoji)).length;
+        if (matchCount > (bestCareer.matchCount || 0)) {
+            bestCareer = c;
+            bestCareer.matchCount = matchCount;
         }
+    });
+    document.getElementById('careerTitle').textContent = bestCareer ? bestCareer.title : 'Unknown Career';
 
-        // Add event listener for the letter icon (only once)
-        document.getElementById('letterIcon').addEventListener('click', () => {
-            const selectedCareer = document.getElementById('careerTitle').textContent.trim();
-            showMessage(selectedCareer);
-        });
+    // Consolidated showMessage function
+    function showMessage(careerTitle) {
+        const message = careerMessages[careerTitle] || "Welcome to the future! Your career is truly groundbreaking. Keep pushing the boundaries!";
+        document.getElementById('popupMessage').innerText = message;
+        document.getElementById('popupContainer').style.display = 'block';
+    }
 
-        // Close popup event listener
-        document.getElementById('closePopup').addEventListener('click', () => {
-            document.getElementById('popupContainer').style.display = 'none';
-        });
+    // Event listener for the letter icon (only once)
+    document.getElementById('letterIcon').addEventListener('click', () => {
+        const selectedCareer = document.getElementById('careerTitle').textContent.trim();
+        showMessage(selectedCareer);
     });
 
-    window.onload = function() {
-        let username = localStorage.getItem("username");
-        if (!username) {
-            window.location.href = "index.html"; // Redirect if no username found
-        }
-    };
+    // Close popup event listener
+    document.getElementById('closePopup').addEventListener('click', () => {
+        document.getElementById('popupContainer').style.display = 'none';
+    });
+});
+
+window.onload = function() {
+    let username = localStorage.getItem("username");
+    if (!username) {
+        window.location.href = "index.html"; // Redirect if no username found
+    }
+};
+
+
+
+
+
+
   </script>
  </body>
 </html>
