@@ -5,140 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imagine Your Best Future</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #ffffff;
-            font-family: 'Exo', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            width: 100vw;
-            margin: 0;
-            padding: 5vh 5% 5%;
-            background-image: url('https://raw.githubusercontent.com/mrapatiteobs/emojime/430b388dfab577cad50dbf9b3b61be7c740fb121/background.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            text-align: center;
-            overflow-y: auto;
-        }
 
-        header {
-            font-size: 1.5em;
-            font-family: 'Orbitron', sans-serif;
-            color: #00ffcc;
-            text-shadow: 2px 2px #ff00ff;
-            margin: 10px 0;
-        }
+<style>
+body {
+    background-color: #0d0d0d;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 5vh 5%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(5, 5, 30, 1) 80%);
+    overflow: hidden;
+    text-align: center;
+}
 
-        .content {
-            font-size: 1.2em;
-            margin-bottom: 15px;
-            line-height: 1.4;
-            max-width: 85%;
-        }
+/* Header Styling */
+header {
+    font-size: 2em;
+    font-weight: bold;
+    color: #00ffcc;
+    text-shadow: 0px 0px 10px #ff00ff, 0px 0px 20px #00ffcc;
+    margin: 20px 0;
+    animation: pulseGlow 1.5s infinite alternate;
+}
 
-        .emojis {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            width: 90%;
-        }
+@keyframes pulseGlow {
+    from {
+        text-shadow: 0px 0px 10px #ff00ff;
+    }
+    to {
+        text-shadow: 0px 0px 25px #00ffcc;
+    }
+}
 
-        .emoji {
-            font-size: 2.5em;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
-            animation: float 3s infinite alternate ease-in-out;
-        }
+/* Content Text */
+.content {
+    font-size: 1.2em;
+    line-height: 1.5;
+    max-width: 85%;
+    margin-bottom: 15px;
+    text-shadow: 0px 0px 10px rgba(0, 255, 204, 0.5);
+}
 
-        .emoji:hover {
-            transform: scale(1.4) rotate(5deg);
-            box-shadow: 0 0 15px #ff00ff;
-            text-shadow: 0 0 15px #ff00ff;
-        }
+/* Emojis Container */
+.emojis {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 90%;
+    position: relative;
+}
 
-        .emoji.selected {
-            transform: scale(1.7);
-            box-shadow: 0 0 20px #00ffcc;
-            text-shadow: 0 0 20px #00ffcc;
-            animation: glow 1s infinite alternate;
-        }
+/* Emoji Styling */
+.emoji {
+    font-size: 3em;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0px 0px 10px rgba(0, 255, 204, 0.7));
+    position: relative;
+    animation: floatEffect 2s infinite alternate ease-in-out;
+}
 
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 15px #00ffcc;
-            }
-            to {
-                box-shadow: 0 0 25px #ff00ff;
-            }
-        }
+/* Floating Effect */
+@keyframes floatEffect {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
 
-        @keyframes float {
-            from {
-                transform: translateY(0);
-            }
-            to {
-                transform: translateY(-10px);
-            }
-        }
+/* Hover and Selection Effects */
+.emoji:hover {
+    transform: scale(1.5);
+    filter: drop-shadow(0px 0px 20px rgba(255, 255, 0, 0.8));
+}
 
-        button {
-            padding: 12px 18px;
-            font-size: 1.1em;
-            margin-top: 15px;
-            cursor: pointer;
-            background-color: #0d0d0d;
-            color: #00ffcc;
-            border: 2px solid #00ffcc;
-            width: 80%;
-            max-width: 250px;
-            transition: background 0.3s, color 0.3s;
-        }
+.emoji.selected {
+    transform: scale(1.8);
+    filter: drop-shadow(0px 0px 25px rgba(255, 0, 255, 0.9));
+    animation: glow 1s infinite alternate;
+}
 
-        button:hover {
-            background-color: #00ffcc;
-            color: #0d0d0d;
-        }
+@keyframes glow {
+    from {
+        filter: drop-shadow(0px 0px 20px rgba(255, 255, 0, 0.8));
+    }
+    to {
+        filter: drop-shadow(0px 0px 35px rgba(255, 0, 255, 1));
+    }
+}
 
-        @media (max-width: 768px) {
-            body {
-                padding: 8vh 5% 5%;
-            }
+/* Futuristic Button */
+button {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    margin-top: 20px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #00ffcc, #ff00ff);
+    color: #0d0d0d;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 0px 15px rgba(0, 255, 204, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 85%;
+    max-width: 260px;
+}
 
-            header {
-                font-size: 1.3em;
-            }
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 25px rgba(255, 0, 255, 0.9);
+}
 
-            .content {
-                font-size: 1em;
-                max-width: 95%;
-            }
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    header {
+        font-size: 1.5em;
+    }
 
-            .emoji {
-                font-size: 1.8em;
-            }
+    .content {
+        font-size: 1em;
+        max-width: 95%;
+    }
 
-            button {
-                font-size: 1em;
-                padding: 10px 15px;
-            }
-        }
-    </style>
+    .emoji {
+        font-size: 2em;
+    }
+
+    button {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+}
+
+</style>
+
 </head>
 <body>
+
     <header>✨ Imagine <span id="username"></span>'s Best Future ✨</header>
+
     <div class="content">
-        <p>Take a deep breath.. Picture yourself 20 years from now.. </p>
+        <p>Take a deep breath.. Picture yourself 20 years from now..</p>
         <p>Let your mind explore the endless possibilities.</p>
-        <p>🔮 Ask yourself.. which 2 emojis best describe my passion?</p>
+        <p>🔮 Ask yourself.. which 2 emojis best describe your passion?</p>
     </div>
+
     <div class="emojis" id="emojiContainer"></div>
+
     <button onclick="saveSelection()">Next</button>
 
     <script>
@@ -146,38 +168,19 @@
             const username = localStorage.getItem('username');
             document.getElementById('username').textContent = username;
 
-            const emojiList = [
-                "🎨", "🧠", "🛠️", "⚔️", "🎼", "🖥️", "🏗️", "🏙️", "📊", "🩺", "🕵️‍♂️",
-                "🎭", "🚀", "👗", "💪", "🤖", "🎮", "💎", "🛩️", "🧬", "✏️", "🛸", "🚄",
-                "🏡", "🎤", "🤝", "⏳", "🐾", "⛈️", "🐠", "🐱", "❤️", "🌍", "⚖️", "💃",
-                "🏺", "🌋", "☢️", "📽️"
-            ];
+            // Randomized Emoji Selection
+            const allEmojis = ['🎨', '🧠', '🛠️', '⚔️', '🎼', '🖥️', '🏗️', '🏙️', '📊', '🩺', '🕵️‍♂️', '🎭', '🚀', '👗', '💪', '🤖', '🎮', '💎', '🛩️', '🧬', '✏️', '🛸', '🚄', '🏡', '🎤', '🤝', '⏳', '🐾', '⛈️', '🐠', '🐱', '❤️', '🌍', '⚖️', '💃', '🏺', '🌋', '☢️', '📽️'];
+            const shuffledEmojis = allEmojis.sort(() => 0.5 - Math.random()).slice(0, 15); // Pick 15 random emojis
 
-            shuffleArray(emojiList); // Randomize the emojis on each refresh
-            displayEmojis(emojiList);
-        });
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-            }
-        }
-
-        function displayEmojis(emojiList) {
-            const container = document.getElementById('emojiContainer');
-            container.innerHTML = ''; // Clear previous content
-
-            emojiList.forEach(emoji => {
+            const emojiContainer = document.getElementById('emojiContainer');
+            shuffledEmojis.forEach(emoji => {
                 const span = document.createElement('span');
                 span.classList.add('emoji');
-                span.innerHTML = emoji;
-                span.onclick = function () {
-                    selectEmoji(this);
-                };
-                container.appendChild(span);
+                span.textContent = emoji;
+                span.onclick = () => selectEmoji(span);
+                emojiContainer.appendChild(span);
             });
-        }
+        });
 
         const selectedEmojis = [];
 
@@ -205,5 +208,6 @@
             }
         }
     </script>
+
 </body>
 </html>
