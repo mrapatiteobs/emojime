@@ -4,169 +4,126 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>In the year 2050</title>
      <style>
-
-body {
-    background-color: #0d0d0d;
-    color: #ffffff;
-    font-family: 'Orbitron', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-  background-image: url('https://raw.githubusercontent.com/mrapatiteobs/emojime/430b388dfab577cad50dbf9b3b61be7c740fb121/background.jpg');
- background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    text-align: center;
-    padding: 0 5%; /* Reduce padding for better fit */
-    overflow: hidden; /* Prevents scrolling */
-}
-
-header {
-    font-size: 1.4em; /* Reduce size slightly */
-    color: #00ffcc;
-    text-shadow: 2px 2px 8px #ff00ff;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    font-family: 'Orbitron', sans-serif;
-    z-index: 10;
-    position: relative;
-    line-height: 1.2; /* Adjust spacing for better fit */
-}
-
-      #username {
-    font-size: 1.8em; /* Slightly bigger than the rest */
- 
-    color: #ff00ff; /* Vibrant neon pink */
-    text-shadow: 0 0 10px #ff00ff, 0 0 10px #cc00ff, 0 0 20px #9900ff; /* Intense purple-pink glow */
-}
-
-      #careerTitle {
-    font-size: 1.8em; /* Slightly bigger than the rest */
-   
-    color: #ffcc00; /* Bright golden/yellow futuristic color */
-    text-shadow: 0 0 10px #ffcc00, 0 0 10px #ffaa00, 0 0 20px #ff8800; /* Warm neon glow */
-       
-  
-}
-
-.letter-text {
-    font-size: 1em; /* Reduce text size */
-    margin-top: 30px;
-    color: #00ffcc;
-    text-shadow: 1px 1px #ff00ff;
-}
-
-img#letterIcon {
-    width: 40px; /* Make icon much smaller */
-    height: 40px;
-    margin-top: 30px;
-}
-
-.popup {
-    display: none;
-    position: fixed;
-    bottom: 20px; /* Distance from the bottom */
-    right: 20px; /* Distance from the right */
-    background: #0d0d0d; /* Solid dark background */
-    opacity: 1 !important; /* Prevents transparency */
-    padding: 20px;
-    width: 330px; /* Adjust width for a compact look */
-    text-align: left;
-    font-size: 1em;
-    font-family: 'Exo', sans-serif;
-    color: #ffffff;
-    border: 3px solid #00ffcc;
-    box-shadow: 0 0 15px #00ffcc;
-    text-shadow: 1px 1px #00ffcc;
-    border-radius: 10px;
-  z-index: 9999; /* Ensures it stays on top of all elements */
-}
-
-/* Ensure the close button is properly positioned */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-/* Email-like styling */
-.popup-header {
-    font-weight: bold;
-    color: #00ffcc;
-    border-bottom: 2px solid #00ffcc;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-}
-
-.popup-body {
-    padding: 10px 0;
-}
-
-.popup-footer {
-    margin-top: 15px;
-    font-size: 0.9em;
-    color: #aaaaaa;
-    border-top: 1px solid #00ffcc;
-    padding-top: 5px;
-}
-
-
-      
-/* Close button */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    cursor: pointer;
-    font-size: 20px;
-    color: #ff00ff;
-}
-
-/* Vibrating animation for "Message Received!" */
-        @keyframes vibrate {
-            0% { transform: translate(0, 0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(2px, -2px); }
-            60% { transform: translate(-2px, -2px); }
-            80% { transform: translate(2px, 2px); }
-            100% { transform: translate(0, 0); }
-        }
-
-        .letter-text {
-            display: inline-block;
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #00ffcc;
-            text-shadow: 0 0 10px #00ffcc;
-            animation: vibrate 0.8s infinite alternate; /* Continuous vibration */
-        }
-
-     
+         body {
+             background-color: #0d0d0d;
+             color: #ffffff;
+             font-family: 'Orbitron', sans-serif;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             height: 100vh;
+             margin: 0;
+             background-image: url('https://raw.githubusercontent.com/mrapatiteobs/emojime/430b388dfab577cad50dbf9b3b61be7c740fb121/background.jpg');
+             background-size: cover;
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-position: center;
+             text-align: center;
+             padding: 0 5%;
+             overflow: hidden;
+         }
+         header {
+             font-size: 1.4em;
+             color: #00ffcc;
+             text-shadow: 2px 2px 8px #ff00ff;
+             margin-bottom: 5px;
+             margin-top: 10px;
+             font-family: 'Orbitron', sans-serif;
+             z-index: 10;
+             position: relative;
+             line-height: 1.2;
+         }
+         #username {
+             font-size: 1.8em;
+             color: #ff00ff;
+             text-shadow: 0 0 10px #ff00ff, 0 0 10px #cc00ff, 0 0 20px #9900ff;
+         }
+         #careerTitle {
+             font-size: 1.8em;
+             color: #ffcc00;
+             text-shadow: 0 0 10px #ffcc00, 0 0 10px #ffaa00, 0 0 20px #ff8800;
+         }
+         .letter-text {
+             font-size: 1em;
+             margin-top: 30px;
+             color: #00ffcc;
+             text-shadow: 1px 1px #ff00ff;
+             display: inline-block;
+             font-weight: bold;
+             animation: vibrate 0.8s infinite alternate;
+         }
+         @keyframes vibrate {
+             0% { transform: translate(0, 0); }
+             20% { transform: translate(-2px, 2px); }
+             40% { transform: translate(2px, -2px); }
+             60% { transform: translate(-2px, -2px); }
+             80% { transform: translate(2px, 2px); }
+             100% { transform: translate(0, 0); }
+         }
+         img#letterIcon {
+             width: 40px;
+             height: 40px;
+             margin-top: 30px;
+         }
+         .popup {
+             display: none;
+             position: fixed;
+             bottom: 20px;
+             right: 20px;
+             background: #0d0d0d;
+             opacity: 1 !important;
+             padding: 20px;
+             width: 330px;
+             text-align: left;
+             font-size: 1em;
+             font-family: 'Exo', sans-serif;
+             color: #ffffff;
+             border: 3px solid #00ffcc;
+             box-shadow: 0 0 15px #00ffcc;
+             text-shadow: 1px 1px #00ffcc;
+             border-radius: 10px;
+             z-index: 9999;
+         }
+         .close {
+             position: absolute;
+             top: 10px;
+             right: 15px;
+             cursor: pointer;
+             font-size: 20px;
+             color: #ff00ff;
+         }
+         .popup-header {
+             font-weight: bold;
+             color: #00ffcc;
+             border-bottom: 2px solid #00ffcc;
+             padding-bottom: 5px;
+             margin-bottom: 10px;
+         }
+         .popup-body {
+             padding: 10px 0;
+         }
+         .popup-footer {
+             margin-top: 15px;
+             font-size: 0.9em;
+             color: #aaaaaa;
+             border-top: 1px solid #00ffcc;
+             padding-top: 5px;
+         }
      </style>
-     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> <!-- Font link -->
+     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
  </head>
  
  <body>
-  <header><br>
+  <header>
     In the year 2050, <br><br>
     <span id="username"></span> <br><br>
     is a world-renowned <br><br>
     <span id="careerTitle"></span> <br>
-</header>   
+  </header>   
   
-     <div class="letter-text">(1) Message Received! </div>
-
-  <!-- Letter Icon -->
-  
-
-<span id="letterIcon" style="cursor: pointer; font-size: 2em;">📩</span>
-
+  <div class="letter-text">(1) Message Received!</div>
+  <span id="letterIcon" style="cursor: pointer; font-size: 2em;">📩</span>
 
   <div id="popupContainer" class="popup">
     <span class="close" id="closePopup">&times;</span>
@@ -180,13 +137,12 @@ img#letterIcon {
     <div class="popup-footer">
         Sent via QuantumMail - The fastest email across galaxies 🚀
     </div>
-</div>
+  </div>
 
- 
-<script>
-
-const careerMessages = {
-    "Quantum Data Sculptor": "Today, I cracked the toughest quantum encryption puzzle ever created, unlocking instantaneous thought transmission across galaxies. Imagine sending ideas across the cosmos at the speed of light, no translation needed! Funny story—my AI assistant tried to decode an alien signal but instead triggered a universal ‘subscribe’ button, accidentally signing half the solar system up for intergalactic newsletters. Keep pushing your limits, younger me. Soon, you’ll be designing security so advanced that even sentient AI civilizations will struggle to break it. The universe isn’t just data—it’s a puzzle waiting for your mind to solve. Dream big, work hard, and shape the digital fabric of existence! Take care, 2025-me. The impossible is just another algorithm to crack.",
+  <script>
+    // Object with career messages
+    const careerMessages = {
+        "Quantum Data Sculptor": "Today, I cracked the toughest quantum encryption puzzle ever created, unlocking instantaneous thought transmission across galaxies. Imagine sending ideas across the cosmos at the speed of light, no translation needed! Funny story—my AI assistant tried to decode an alien signal but instead triggered a universal ‘subscribe’ button, accidentally signing half the solar system up for intergalactic newsletters. Keep pushing your limits, younger me. Soon, you’ll be designing security so advanced that even sentient AI civilizations will struggle to break it. The universe isn’t just data—it’s a puzzle waiting for your mind to solve. Dream big, work hard, and shape the digital fabric of existence! Take care, 2025-me. The impossible is just another algorithm to crack.",
     "AI-Powered Dream Architect": "Today, I designed a dream simulation so vivid that people can’t tell where reality ends and imagination begins. The funniest part? Someone dreamt they were in a never-ending meeting, and their AI refused to wake them up! Now, people can step into each other’s dreams like doorways—an artist built a sky filled with floating neon islands, and a scientist created a world where thoughts control the weather. Soon, sleep won’t just be rest—it will be the ultimate creative tool. Keep exploring the power of imagination and technology, younger me. You’re shaping a future where dreams are no longer just visions, but worlds we can visit. Take care, 2025-me. Your imagination is limitless.",
     "Holographic Sports Strategist": "I just revolutionized sports by designing a holographic tournament where athletes compete against AI-generated legends in zero-gravity arenas. One time, a glitch made the holograms self-aware, and they started coaching the coaches—turns out, AI Muhammad Ali has some serious strategy tips! Now, sports aren’t just physical—they’re multidimensional, played on floating stadiums with dynamic environments that change in real-time. Keep training your mind and body, younger me. Soon, you won’t just be playing the game—you’ll be redefining what competition means for an entire generation. Take care, 2025-me. The future of sports is waiting for your innovation!",
     "Neural Interface Designer": "Today, I successfully created a brain-computer interface that lets people compose symphonies, write novels, and even design entire universes just by thinking. The funniest moment? Someone accidentally ordered 1000 rubber ducks online just by daydreaming! We even developed an instant translator that allows people to communicate in any language—including ancient and alien dialects. The lines between thought and action are disappearing, younger me. Soon, your ideas will move faster than your hands, and creativity will flow as effortlessly as a heartbeat. Keep learning, keep building—because one day, you won’t just shape technology, you’ll merge with it. Take care, 2025-me. The future is waiting for your mind.",
@@ -268,22 +224,21 @@ const careerMessages = {
     "Lunar Mining Specialist": "Hey, space pioneer! Today, I extracted rare minerals from the moon that revolutionized technology on Earth. Now, lunar resources power innovation! Funniest moment? A mining bot started stacking rocks into smiley faces. Younger me, there’s a whole universe of resources—keep reaching for them! Take care, 2025-me. The moon is just the beginning!"
     };
 
- 
     document.addEventListener('DOMContentLoaded', () => {
+        // Retrieve username
         const username = localStorage.getItem('username') || 'User';
-        console.log('Username:', username); // Debug statement
         document.getElementById('username').textContent = username;
 
+        // Retrieve selected emojis
         const selectedEmojis = JSON.parse(localStorage.getItem('selectedEmojis')) || [];
-        console.log('Selected Emojis:', selectedEmojis); // Debug statement
-
         if (!Array.isArray(selectedEmojis) || selectedEmojis.length === 0) {
             document.getElementById('careerTitle').textContent = 'Unknown Career';
             return;
         }
 
+        // Example careers table (your full list would be here)
         const careersTable = [
-    { emojis: ['🎨', '🧠'], title: 'Art-Neural Innovator' },
+         { emojis: ['🎨', '🧠'], title: 'Art-Neural Innovator' },
     { emojis: ['🎨', '🛠️'], title: 'Art Mechanic Visionary' },
     { emojis: ['🎨', '⚔️'], title: 'Art Combat Strategist' },
     { emojis: ['🎨', '🎼'], title: 'Art Symphony Curator' },
@@ -1084,89 +1039,48 @@ const careerMessages = {
     { emojis: ['🛩️', '🌍'], title: 'Aero-Global Network Engineer' },
     { emojis: ['🧬', '⚖️'], title: 'Genomic Legal Systems Architect' }
          
-                // Add more career entries as needed    
+                // Add more career entries as needed   
         ];
 
-        let career = careersTable.find(c => 
-            selectedEmojis.every(emoji => c.emojis.includes(emoji))
-        ) || careersTable.find(c => 
-            selectedEmojis.some(emoji => c.emojis.includes(emoji))
-        );
+        // Determine the best matching career (simplified logic)
+        let bestCareer = careersTable[0];
+        careersTable.forEach(c => {
+            let matchCount = selectedEmojis.filter(emoji => c.emojis.includes(emoji)).length;
+            if (matchCount > (bestCareer.matchCount || 0)) {
+                bestCareer = c;
+                bestCareer.matchCount = matchCount;
+            }
+        });
+        document.getElementById('careerTitle').textContent = bestCareer ? bestCareer.title : 'Unknown Career';
 
-let bestCareer = null;
-let bestMatchCount = 0;
-
-careersTable.forEach(c => {
-    let matchCount = selectedEmojis.filter(emoji => c.emojis.includes(emoji)).length;
-    if (matchCount > bestMatchCount) {
-        bestCareer = c;
-        bestMatchCount = matchCount;
-    }
-});
-
-document.getElementById('careerTitle').textContent = bestCareer ? bestCareer.title : 'Unknown Career';
-
-
-        
-        
-
-
-  function showMessage(careertitle) {
-        const message = careerMessages[careertitle];
-        if (message) {
+        // Consolidated showMessage function
+        function showMessage(careerTitle) {
+            const message = careerMessages[careerTitle] || "Welcome to the future! Your career is truly groundbreaking. Keep pushing the boundaries!";
             document.getElementById('popupMessage').innerText = message;
             document.getElementById('popupContainer').style.display = 'block';
-        } else {
-            alert('No message found for the selected career title.');
         }
-    }
 
+        // Add event listener for the letter icon (only once)
+        document.getElementById('letterIcon').addEventListener('click', () => {
+            const selectedCareer = document.getElementById('careerTitle').textContent.trim();
+            showMessage(selectedCareer);
+        });
+
+        // Close popup event listener
+        document.getElementById('closePopup').addEventListener('click', () => {
+            document.getElementById('popupContainer').style.display = 'none';
+        });
     });
 
-    document.getElementById('closePopup').addEventListener('click', function() {
-        document.getElementById('popupContainer').style.display = 'none';
-    });
- 
-document.getElementById('letterIcon').addEventListener('click', function() {
-    const selectedCareer = document.getElementById('careerTitle').textContent.trim();
-    showMessage(selectedCareer);
-});
-
-
-     
-
-
-
- window.onload = function() {
-    let username = localStorage.getItem("username");
-    if (username) {
-        document.getElementById("username").innerText = username;
-    } else {
-        window.location.href = "index.html"; // Redirect if no username found
-    }
-};
-
-function showMessage(careerTitle) {
-    const message = careerMessages[careerTitle] || "Welcome to the future! Your career is truly groundbreaking. Keep pushing the boundaries!";
-    document.getElementById('popupMessage').innerText = message;
-    document.getElementById('popupContainer').style.display = 'block';
-}
-
-document.getElementById('letterIcon').addEventListener('click', function() {
-    const selectedCareer = document.getElementById('careerTitle').textContent.trim();
-    showMessage(selectedCareer);
-});
-
-
-
-
-    </script>
-</body>
-
-
+    window.onload = function() {
+        let username = localStorage.getItem("username");
+        if (!username) {
+            window.location.href = "index.html"; // Redirect if no username found
+        }
+    };
+  </script>
+ </body>
 </html>
-
-
 
 
         
