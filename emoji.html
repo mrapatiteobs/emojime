@@ -168,10 +168,13 @@ button:hover {
             const username = localStorage.getItem('username');
             document.getElementById('username').textContent = username;
 
-            // Randomized Emoji Selection
+            // All Emojis
             const allEmojis = ['🎨', '🧠', '🛠️', '⚔️', '🎼', '🖥️', '🏗️', '🏙️', '📊', '🩺', '🕵️‍♂️', '🎭', '🚀', '👗', '💪', '🤖', '🎮', '💎', '🛩️', '🧬', '✏️', '🛸', '🚄', '🏡', '🎤', '🤝', '⏳', '🐾', '⛈️', '🐠', '🐱', '❤️', '🌍', '⚖️', '💃', '🏺', '🌋', '☢️', '📽️'];
-            const shuffledEmojis = allEmojis.sort(() => 0.5 - Math.random()).slice(0, 15); // Pick 15 random emojis
 
+            // Shuffle emojis
+            const shuffledEmojis = allEmojis.sort(() => Math.random() - 0.5);
+
+            // Display emojis
             const emojiContainer = document.getElementById('emojiContainer');
             shuffledEmojis.forEach(emoji => {
                 const span = document.createElement('span');
