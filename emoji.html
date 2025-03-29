@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #0d0d0d;
+      background: radial-gradient(circle at center, #0d0d0d 10%, #05051e 90%);
       color: #ffffff;
       font-family: 'Orbitron', sans-serif;
       display: flex;
@@ -18,37 +18,30 @@
       width: 100vw;
       margin: 0;
       padding: 5vh 5%;
-      background: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(5, 5, 30, 1) 80%);
       text-align: center;
       overflow-y: auto;
-      animation: bgShift 10s infinite alternate;
-    }
-
-    @keyframes bgShift {
-      from { background: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(5, 5, 30, 1) 80%); }
-      to { background: radial-gradient(circle, rgba(5, 5, 30, 1) 20%, rgba(0, 0, 0, 1) 80%); }
     }
 
     header {
       font-size: 2em;
       font-weight: bold;
       color: #00ffcc;
-      text-shadow: 0px 0px 10px #ff00ff, 0px 0px 20px #00ffcc;
+      text-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffcc;
       margin-bottom: 20px;
-      animation: pulseGlow 1.5s infinite alternate;
+      animation: glowPulse 1.5s infinite alternate;
     }
 
-    @keyframes pulseGlow {
-      from { text-shadow: 0px 0px 10px #ff00ff; }
-      to { text-shadow: 0px 0px 25px #00ffcc; }
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 15px #ff00ff; }
+      to { text-shadow: 0 0 35px #00ffcc; }
     }
 
     .content {
       font-size: 1.1em;
       line-height: 1.6;
-      max-width: 95%;
+      max-width: 90%;
       margin-bottom: 20px;
-      text-shadow: 0px 0px 15px rgba(0, 255, 204, 0.5);
+      text-shadow: 0px 0px 12px rgba(0, 255, 204, 0.7);
     }
 
     .emojis {
@@ -56,7 +49,7 @@
       grid-template-columns: repeat(6, 1fr);
       gap: 12px;
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
       margin-bottom: 25px;
     }
 
@@ -64,72 +57,73 @@
       font-size: 2.8em;
       cursor: pointer;
       transition: transform 0.3s ease, filter 0.3s ease;
-      filter: drop-shadow(0px 0px 10px rgba(0, 255, 204, 0.7));
+      filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.7));
       text-align: center;
     }
 
     .emoji:hover, .emoji.selected {
-      transform: scale(1.5);
-      filter: drop-shadow(0px 0px 25px rgba(255, 255, 0, 0.8));
+      transform: scale(1.4) rotate(5deg);
+      filter: drop-shadow(0px 0px 25px rgba(255, 255, 0, 1));
     }
 
     button {
-      padding: 12px 20px;
+      padding: 14px 25px;
       font-size: 1.1em;
-      margin-top: 20px;
       cursor: pointer;
-      background: rgba(0, 255, 204, 0.2);
-      color: #00ffcc;
-      border: 2px solid #00ffcc;
+      background: linear-gradient(90deg, #00ffcc, #ff00ff);
+      color: #0d0d0d;
+      border: none;
       border-radius: 10px;
       font-weight: bold;
-      box-shadow: 0px 0px 15px rgba(0, 255, 204, 0.7);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-      backdrop-filter: blur(10px);
+      box-shadow: 0px 0px 20px rgba(0, 255, 204, 0.9);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 85%;
+      max-width: 260px;
     }
 
     button:hover {
       transform: scale(1.1);
-      background: rgba(255, 0, 255, 0.3);
-      box-shadow: 0px 0px 25px rgba(255, 0, 255, 0.9);
+      box-shadow: 0px 0px 30px rgba(255, 0, 255, 1);
     }
 
     @media (max-width: 768px) {
       header { font-size: 1.7em; }
       .content { font-size: 1em; }
-      .emoji { font-size: 2.3em; }
-      button { font-size: 1em; padding: 10px 15px; }
+      .emoji { font-size: 2.5em; }
+      button { font-size: 1em; padding: 12px 20px; }
       .emojis { grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    }
+
+    @media (max-width: 480px) {
+      header { font-size: 1.5em; }
+      .content { font-size: 0.9em; }
+      .emoji { font-size: 2.2em; }
+      button { font-size: 0.9em; padding: 10px 15px; }
+      .emojis { grid-template-columns: repeat(6, 1fr); gap: 8px; }
     }
   </style>
 </head>
 <body>
-  <header>🚀 Step Into <span id="username"></span>'s Future Universe ✨</header>
+  <header>✨ Imagine <span id="username"></span>'s Best Future ✨</header>
 
   <div class="content">
-    <p>🌟 Close your eyes for a moment… Breathe in the future.</p>
-    <p>🚀 Imagine a world where your dreams have become reality.</p>
-    <p>🔮 If your passion could be captured in just <strong>two symbols</strong>, which ones would you choose?</p>
+    <p>Take a deep breath... Picture yourself 20 years from now...</p>
+    <p>Let your mind explore endless possibilities.</p>
+    <p>🔮 Ask yourself... which 2 emojis best describe your passion?</p>
   </div>
 
   <div class="emojis" id="emojiContainer"></div>
 
-  <button onclick="saveSelection()">🚀 Unlock My Future</button>
+  <button onclick="saveSelection()">Next</button>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const username = localStorage.getItem('username');
       document.getElementById('username').textContent = username;
-    });
 
-
-
- const allEmojis = ['🎨', '🧠', '🛠️', '⚔️', '🎼', '🖥️', '🏗️', '🏙️', '📊', '🩺', '🕵️‍♂️', '🎭', '🚀', '👗', '💪', '🤖', '🎮', '💎', '🛩️', '🧬', '✏️', '🛸', '🚄', '🏡', '🎤', '🤝', '⏳', '🐾', '⛈️', '🐠', '🐯', '❤️', '🌍', '⚖️', '💃', '🏺', '🌋', '☢️', '📽️', '🐱'];
-
-      // Shuffle emojis to randomize positions
+      const allEmojis = ['🎨', '🧠', '🛠️', '⚔️', '🎼', '🖥️', '🏗️', '🏙️', '📊', '🩺', '🕵️‍♂️', '🎭', '🚀', '👗', '💪', '🤖', '🎮', '💎', '🛩️', '🧬', '✏️', '🛸', '🚄', '🏡', '🎤', '🤝', '⏳', '🐾', '⛈️', '🐠', '🐯', '❤️', '🌍', '⚖️', '💃', '🏺', '🌋', '☢️', '📽️', '🐱'];
+      
       const shuffledEmojis = allEmojis.sort(() => Math.random() - 0.5);
-
-      // Display emojis
       const emojiContainer = document.getElementById('emojiContainer');
       emojiContainer.innerHTML = '';
       shuffledEmojis.forEach(emoji => {
@@ -166,7 +160,6 @@
         alert('Please select exactly 2 emojis.');
       }
     }
-    
   </script>
 </body>
 </html>
