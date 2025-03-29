@@ -2260,13 +2260,6 @@ document.addEventListener('DOMContentLoaded', () => {
      
     ]
 
-// Function to check if two arrays are equal (order doesn't matter)
-function arraysEqual(a, b) {
-  if (a.length !== b.length) return false;
-  a = a.slice().sort();
-  b = b.slice().sort();
-  return a.every((val, index) => val === b[index]);
-}
 
 const exactCareer = careersTable.find(c => arraysEqual(c.emojis, selectedEmojis));
 document.getElementById('careerTitle').textContent = exactCareer ? exactCareer.title : 'Unknown Career';
