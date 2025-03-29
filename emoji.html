@@ -24,81 +24,53 @@
     }
 
     header {
-      font-size: 2em;
+      font-size: 1.8em;
       font-weight: bold;
       color: #00ffcc;
       text-shadow: 0px 0px 10px #ff00ff, 0px 0px 20px #00ffcc;
-      margin: 20px 0;
+      margin-bottom: 15px;
       animation: pulseGlow 1.5s infinite alternate;
     }
 
     @keyframes pulseGlow {
-      from {
-        text-shadow: 0px 0px 10px #ff00ff;
-      }
-      to {
-        text-shadow: 0px 0px 25px #00ffcc;
-      }
+      from { text-shadow: 0px 0px 10px #ff00ff; }
+      to { text-shadow: 0px 0px 25px #00ffcc; }
     }
 
     .content {
-      font-size: 1.2em;
+      font-size: 1em;
       line-height: 1.5;
-      max-width: 90%;
-      margin-bottom: 20px;
+      max-width: 95%;
+      margin-bottom: 15px;
       text-shadow: 0px 0px 10px rgba(0, 255, 204, 0.5);
     }
 
     .emojis {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+      gap: 12px;
       width: 100%;
       margin-bottom: 20px;
+      max-width: 450px;
     }
 
     .emoji {
-      font-size: 3em;
+      font-size: 2.5em;
       cursor: pointer;
       transition: transform 0.3s ease, filter 0.3s ease;
       filter: drop-shadow(0px 0px 10px rgba(0, 255, 204, 0.7));
-      animation: floatEffect 2s infinite alternate ease-in-out;
+      text-align: center;
     }
 
-    @keyframes floatEffect {
-      from {
-        transform: translateY(0);
-      }
-      to {
-        transform: translateY(-10px);
-      }
-    }
-
-    .emoji:hover {
-      transform: scale(1.5);
+    .emoji:hover, .emoji.selected {
+      transform: scale(1.4);
       filter: drop-shadow(0px 0px 20px rgba(255, 255, 0, 0.8));
-    }
-
-    .emoji.selected {
-      transform: scale(1.8);
-      filter: drop-shadow(0px 0px 25px rgba(255, 0, 255, 0.9));
-      animation: glow 1s infinite alternate;
-    }
-
-    @keyframes glow {
-      from {
-        filter: drop-shadow(0px 0px 20px rgba(255, 255, 0, 0.8));
-      }
-      to {
-        filter: drop-shadow(0px 0px 35px rgba(255, 0, 255, 1));
-      }
     }
 
     button {
       padding: 12px 20px;
-      font-size: 1.1em;
-      margin-top: 20px;
+      font-size: 1em;
+      margin-top: 15px;
       cursor: pointer;
       background: linear-gradient(90deg, #00ffcc, #ff00ff);
       color: #0d0d0d;
@@ -107,8 +79,8 @@
       font-weight: bold;
       box-shadow: 0px 0px 15px rgba(0, 255, 204, 0.7);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: 90%;
-      max-width: 260px;
+      width: 80%;
+      max-width: 240px;
     }
 
     button:hover {
@@ -118,21 +90,21 @@
 
     /* Mobile Optimization */
     @media (max-width: 768px) {
-      header {
-        font-size: 1.5em;
-      }
-      .content {
-        font-size: 1em;
-        max-width: 95%;
-      }
-      .emoji {
-        font-size: 2em;
-      }
-      button {
-        font-size: 1em;
-        padding: 10px 15px;
-      }
+      header { font-size: 1.5em; }
+      .content { font-size: 0.9em; }
+      .emoji { font-size: 2em; }
+      button { font-size: 0.9em; padding: 10px 15px; }
+      .emojis { grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); }
     }
+
+    @media (max-width: 480px) {
+      header { font-size: 1.3em; }
+      .content { font-size: 0.85em; }
+      .emoji { font-size: 1.8em; }
+      button { font-size: 0.85em; padding: 10px 12px; }
+      .emojis { grid-template-columns: repeat(auto-fit, minmax(35px, 1fr)); }
+    }
+
   </style>
 </head>
 <body>
@@ -153,8 +125,8 @@
       const username = localStorage.getItem('username');
       document.getElementById('username').textContent = username;
 
-      // All Emojis
-      const allEmojis = ['🎨', '🧠', '🛠️', '⚔️', '🎼', '🖥️', '🏗️', '🏙️', '📊', '🩺', '🕵️‍♂️', '🎭', '🚀', '👗', '💪', '🤖', '🎮', '💎', '🛩️', '🧬', '✏️', '🛸', '🚄', '🏡', '🎤', '🤝', '⏳', '🐾', '⛈️', '🐠', '🐯', '❤️', '🌍', '⚖️', '💃', '🏺', '🌋', '☢️', '📽️'];
+      // Emojis (added 🐱 and 🌍 to ensure inclusion)
+      const allEmojis = ['🎨', '🧠', '🛠️', '⚔️', '🎼', '🖥️', '🏗️', '🏙️', '📊', '🩺', '🕵️‍♂️', '🎭', '🚀', '👗', '💪', '🤖', '🎮', '💎', '🛩️', '🧬', '✏️', '🛸', '🚄', '🏡', '🎤', '🤝', '⏳', '🐾', '⛈️', '🐠', '🐯', '❤️', '🌍', '⚖️', '💃', '🏺', '🌋', '☢️', '📽️', '🐱'];
 
       // Shuffle emojis to randomize positions
       const shuffledEmojis = allEmojis.sort(() => Math.random() - 0.5);
