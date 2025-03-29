@@ -121,6 +121,52 @@
       const username = localStorage.getItem('username');
       document.getElementById('username').textContent = username;
     });
+
+
+
+ const allEmojis = ['🎨', '🧠', '🛠️', '⚔️', '🎼', '🖥️', '🏗️', '🏙️', '📊', '🩺', '🕵️‍♂️', '🎭', '🚀', '👗', '💪', '🤖', '🎮', '💎', '🛩️', '🧬', '✏️', '🛸', '🚄', '🏡', '🎤', '🤝', '⏳', '🐾', '⛈️', '🐠', '🐯', '❤️', '🌍', '⚖️', '💃', '🏺', '🌋', '☢️', '📽️', '🐱'];
+
+      // Shuffle emojis to randomize positions
+      const shuffledEmojis = allEmojis.sort(() => Math.random() - 0.5);
+
+      // Display emojis
+      const emojiContainer = document.getElementById('emojiContainer');
+      emojiContainer.innerHTML = '';
+      shuffledEmojis.forEach(emoji => {
+        const span = document.createElement('span');
+        span.classList.add('emoji');
+        span.textContent = emoji;
+        span.onclick = () => selectEmoji(span);
+        emojiContainer.appendChild(span);
+      });
+    });
+
+    const selectedEmojis = [];
+
+    function selectEmoji(element) {
+      if (selectedEmojis.length < 2 || element.classList.contains('selected')) {
+        element.classList.toggle('selected');
+        const emoji = element.textContent;
+        if (element.classList.contains('selected')) {
+          selectedEmojis.push(emoji);
+        } else {
+          const index = selectedEmojis.indexOf(emoji);
+          if (index > -1) {
+            selectedEmojis.splice(index, 1);
+          }
+        }
+      }
+    }
+
+    function saveSelection() {
+      if (selectedEmojis.length === 2) {
+        localStorage.setItem('selectedEmojis', JSON.stringify(selectedEmojis));
+        window.location.href = 'Career.html';
+      } else {
+        alert('Please select exactly 2 emojis.');
+      }
+    }
+    
   </script>
 </body>
 </html>
