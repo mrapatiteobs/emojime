@@ -63,6 +63,14 @@
         <input type="text" id="usernameInput" placeholder="Your name">
         <button onclick="saveUsername()">Submit</button>
     </div>
+
+    <p>Do you think AI will improve the future? 🤖</p>
+<select id="surveyAnswer">
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+    <option value="Maybe">Maybe</option>
+</select>
+
     <script>
         function saveUsername() {
             const username = document.getElementById('usernameInput').value;
@@ -74,6 +82,31 @@
                 alert('Please enter your name.');
             }
         }
+
+        function saveUsername() {
+    const username = document.getElementById('usernameInput').value;
+    const surveyAnswer = document.getElementById('surveyAnswer').value;
+
+    if (username) {
+        localStorage.setItem('username', username);
+        
+        // Send data to the backend
+        fetch('http://localhost:3000/submit-survey', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, surveyAnswer })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(`Hi ${username}! ${data.message}`);
+            window.location.href = 'emoji.html';
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+        alert('Please enter your name.');
+    }
+}
+
     </script>
 </body>
 </html>
