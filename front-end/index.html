@@ -6,70 +6,114 @@
     <title>Welcome to the Future</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Global Styles */
         body {
             background-color: #0d0d0d;
             color: #ffffff;
-            font-family: 'Exo', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            font-family: 'Orbitron', sans-serif;
             margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             background-image: url('https://raw.githubusercontent.com/mrapatiteobs/emojime/430b388dfab577cad50dbf9b3b61be7c740fb121/background.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
         }
+
+        /* Main Container */
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
         header {
             font-size: 3em;
             color: #00ffcc;
             text-shadow: 2px 2px #ff00ff;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
+
         .content {
-            font-size: 1.5em;
-            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
         }
+
+        /* Input Fields */
         input[type="text"] {
-            padding: 10px;
-            font-size: 1em;
-            margin-top: 10px;
+            padding: 12px;
+            font-size: 1.1em;
+            width: 80%;
+            margin: 10px 0;
+            border-radius: 5px;
             border: 2px solid #00ffcc;
             background-color: #0d0d0d;
             color: #ffffff;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            margin-top: 10px;
-            cursor: pointer;
-            background-color: #0d0d0d;
-            color: #00ffcc;
+
+        select {
+            padding: 12px;
+            font-size: 1.1em;
+            width: 80%;
+            margin: 10px 0;
+            border-radius: 5px;
             border: 2px solid #00ffcc;
+            background-color: #0d0d0d;
+            color: #ffffff;
         }
-        button:hover {
+
+        button {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            margin-top: 20px;
+            cursor: pointer;
             background-color: #00ffcc;
             color: #0d0d0d;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff00ff;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #ffffff;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <header>Welcome to the Future</header>
-    <div class="content">
-        <p>Please enter your name ✍️ :</p>
-        <input type="text" id="usernameInput" placeholder="Your name">
-        <button onclick="saveUserData()">Submit</button>
+    <div class="container">
+        <header>Welcome to the Future</header>
+        <div class="content">
+            <p>Please enter your name ✍️ :</p>
+            <input type="text" id="usernameInput" placeholder="Your name">
+            <p>What comes to your mind when I say the word FUTURE? 🌍</p>
+            <select id="futureAnswer">
+                <option value="I don't look forward to it">I don't look forward to it</option>
+                <option value="It's exciting, I can't wait">It's exciting, I can't wait</option>
+                <option value="Neutral">Neutral</option>
+                <option value="I am in charge, I can't wait to write my future">I am in charge, I can't wait to write my future</option>
+            </select>
+            <button onclick="saveUserData()">Submit</button>
+        </div>
+        <footer>
+            <p>Powered by Emojime</p>
+        </footer>
     </div>
-
-    <p>What comes to your mind when I say the word FUTURE? 🌍</p>
-    <select id="futureAnswer">
-        <option value="I don't look forward to it">I don't look forward to it</option>
-        <option value="It's exciting, I can't wait">It's exciting, I can't wait</option>
-        <option value="Neutral">Neutral</option>
-        <option value="I am in charge, I can't wait to write my future">I am in charge, I can't wait to write my future</option>
-    </select>
 
     <script>
         function saveUserData() {
