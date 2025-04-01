@@ -85,7 +85,7 @@
                 };
 
                 // Send data to the backend (Make sure this URL points to your deployed backend)
-                fetch('https://your-backend-url.onrender.com/submit-survey', {
+                fetch('https://emojime.onrender.com', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -95,7 +95,7 @@
                 .then(response => response.json())
                 .then(data => {
                     alert(`Hi ${username}! Your answer has been submitted successfully.`);
-                    window.location.href = 'emoji.html'; // Redirect to next page after submission
+                    window.location.href = 'front-end/emoji.html'; // Redirect to next page after submission
                 })
                 .catch(error => {
                     console.error('Error:', error);
