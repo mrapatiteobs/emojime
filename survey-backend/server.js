@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const uri = 'mongodb+srv://apatiteobsidian:<db_password>@cluster0.nqxbbxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'; // Replace with your actual MongoDB URI
+const uri = 'mongodb+srv://apatiteobsidian:V3TyembIN96tg3p7@cluster0.vwot3xj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'; // Replace with your actual MongoDB URI
 const client = new MongoClient(uri);
 
 async function connectDB() {
