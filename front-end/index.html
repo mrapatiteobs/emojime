@@ -155,15 +155,17 @@
         let selectedAnswer = '';
 
         // Function to set the selected answer
-        function setAnswer(answer) {
-            selectedAnswer = answer;
-            // Optionally add active class or style to the selected option
-            const options = document.querySelectorAll('.answer-option');
-            options.forEach(option => {
-                option.style.backgroundColor = '#333'; // Reset background color
-            });
-            event.target.style.backgroundColor = '#00ffcc'; // Highlight selected option
-        }
+
+        function setAnswer(answer, event) {
+    selectedAnswer = answer;
+    const options = document.querySelectorAll('.answer-option');
+    options.forEach(option => {
+        option.style.backgroundColor = '#333'; // Reset background color
+    });
+    event.target.style.backgroundColor = '#00ffcc'; // Highlight selected option
+}
+
+        
 
         // Function to save user data
         function saveUserData() {
@@ -189,7 +191,9 @@
 
                     .then(data => {
     alert(`Hi ${username}! Your answer has been submitted successfully.`);
-    window.location.href = `front-end/emoji.html?username=${encodeURIComponent(username)}&futureAnswer=${encodeURIComponent(futureAnswer)}`; // Redirect with query parameters
+                        
+  window.location.href = `front-end/emoji.html?username=${encodeURIComponent(username)}&futureAnswer=${encodeURIComponent(selectedAnswer)}`;
+
 })
 
                     
