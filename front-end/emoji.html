@@ -1,166 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imagine Your Best Future</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: radial-gradient(circle at center, #0d0d0d 10%, #05051e 90%);
-      color: #ffffff;
-      font-family: 'Orbitron', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      width: 100vw;
-      margin: 0;
-      padding: 5vh 5%;
-      text-align: center;
-      overflow-y: auto;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Response</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://raw.githubusercontent.com/mrapatiteobs/emojime/430b388dfab577cad50dbf9b3b61be7c740fb121/background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
 
-    header {
-      font-size: 2em;
-      font-weight: bold;
-      color: #00ffcc;
-      text-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffcc;
-      margin-bottom: 20px;
-      animation: glowPulse 1.5s infinite alternate;
-    }
+        /* Main Container */
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
 
-    @keyframes glowPulse {
-      from { text-shadow: 0 0 15px #ff00ff; }
-      to { text-shadow: 0 0 35px #00ffcc; }
-    }
+        header {
+            font-size: 3em;
+            color: #00ffcc;
+            text-shadow: 2px 2px #ff00ff;
+            margin-bottom: 20px;
+        }
 
-    .content {
-      font-size: 1.1em;
-      line-height: 1.6;
-      max-width: 90%;
-      margin-bottom: 20px;
-      text-shadow: 0px 0px 12px rgba(0, 255, 204, 0.7);
-    }
+        .content {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
 
-    .emojis {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
-      width: 90%;
-      max-width: 450px;
-      margin-bottom: 25px;
-    }
+        /* Emoji Display */
+        .emoji-container {
+            font-size: 2em;
+            margin: 20px 0;
+        }
 
-    .emoji {
-      font-size: 1.7em;
-      .emoji {
-  cursor: url('https://cur.cursors-4u.net/special/spe-3/spe299.cur'), auto;}
-      transition: transform 0.3s ease, filter 0.3s ease;
-      filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.7));
-      text-align: center;
-    }
+        .emoji-container i {
+            margin: 0 10px;
+        }
 
-    .emoji:hover, .emoji.selected {
-      transform: scale(1.7) rotate(5.5deg);
-      filter: drop-shadow(0px 0px 25px rgba(255, 255, 0, 1));
-    }
+        .answer-text {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
 
-    button {
-      padding: 14px 25px;
-      font-size: 1.1em;
-      cursor: pointer;
-      background: linear-gradient(90deg, #00ffcc, #ff00ff);
-      color: #0d0d0d;
-      border: none;
-      border-radius: 10px;
-      font-weight: bold;
-      box-shadow: 0px 0px 20px rgba(0, 255, 204, 0.9);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: 85%;
-      max-width: 260px;
-    }
+        button {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #00ffcc;
+            color: #0d0d0d;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-    button:hover {
-      transform: scale(1.1);
-      box-shadow: 0px 0px 30px rgba(255, 0, 255, 1);
-    }
+        button:hover {
+            background-color: #ff00ff;
+            color: #ffffff;
+        }
 
-    @media (max-width: 768px) {
-      header { font-size: 1.7em; }
-      .content { font-size: 1em; }
-      .emoji { font-size: 2.8em; }
-      button { font-size: 1em; padding: 12px 20px; }
-      .emojis { grid-template-columns: repeat(6, 1fr); gap: 10px; }
-    }
-
-    @media (max-width: 480px) {
-      header { font-size: 1.4em; }
-      .content { font-size: 0.8em; }
-      .emoji { font-size: 1.7em; }
-      button { font-size: 0.9em; padding: 10px 15px; }
-      .emojis { grid-template-columns: repeat(6, 1fr); gap: 8px; }
-    }
-  </style>
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #ffffff;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <header>✨ Imagine <span id="username"></span>'s Best Future ✨</header>
+    <div class="container">
+        <header>Welcome to the Future, <span id="username"></span>!</header>
+        <div class="content">
+            <p>Your response to "What comes to your mind when I say the word FUTURE?"</p>
+            <div class="emoji-container">
+                <span id="emoji"></span>
+            </div>
+            <div class="answer-text" id="answerText"></div>
+            <button onclick="goBack()">Go Back</button>
+        </div>
+        <footer>
+            <p>Powered by Emojime</p>
+        </footer>
+    </div>
 
-  <div class="content">
- <p>🌟 Close your eyes for a moment… Breathe in the future.  🚀 Imagine a world where your dreams have become reality.</p>
-     <p>🔮 If your passion could be captured in just <strong>two symbols</strong>, which ones would you choose?</p>
-    
-  </div>
+    <script>
+        // Get data from localStorage or URL (based on the method used)
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        const futureAnswer = urlParams.get('futureAnswer');
 
-  <div class="emojis" id="emojiContainer"></div>
+        // Display user data on emoji page
+        if (username && futureAnswer) {
+            document.getElementById('username').textContent = username;
 
-  <button onclick="saveSelection()">Next</button>
+            // Map the answer to an emoji
+            let emoji = '';
+            let answerText = '';
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const username = localStorage.getItem('username');
-      document.getElementById('username').textContent = username;
+            switch (futureAnswer) {
+                case "I don't look forward to it":
+                    emoji = '😞';
+                    answerText = 'You are feeling uncertain about the future.';
+                    break;
+                case "It\'s exciting, I can\'t wait":
+                    emoji = '🤩';
+                    answerText = 'You are thrilled and optimistic about the future!';
+                    break;
+                case "Neutral":
+                    emoji = '😐';
+                    answerText = 'You are neutral about the future.';
+                    break;
+                case "I am in charge, I can\'t wait to write my future":
+                    emoji = '💪';
+                    answerText = 'You are empowered and excited to shape your future!';
+                    break;
+                default:
+                    emoji = '❓';
+                    answerText = 'No response selected.';
+            }
 
-      const allEmojis = ['🎨', '🧠', '🛠️', '⚔️', '🎼', '🖥️', '🏗️', '🏙️', '📊', '🩺', '🕵️‍♂️', '🎭', '🚀', '👗', '💪', '🤖', '🎮', '💎', '🛩️', '🧬', '✏️', '🛸', '🚄', '🏡', '🎤', '🤝', '⏳', '🐾', '⛈️', '🐠', '🐯', '❤️', '🌍', '⚖️', '💃', '🏺', '🌋', '☢️', '📽️', '🐱'];
-      
-      const shuffledEmojis = allEmojis.sort(() => Math.random() - 0.5);
-      const emojiContainer = document.getElementById('emojiContainer');
-      emojiContainer.innerHTML = '';
-      shuffledEmojis.forEach(emoji => {
-        const span = document.createElement('span');
-        span.classList.add('emoji');
-        span.textContent = emoji;
-        span.onclick = () => selectEmoji(span);
-        emojiContainer.appendChild(span);
-      });
-    });
-
-    const selectedEmojis = [];
-
-    function selectEmoji(element) {
-      if (selectedEmojis.length < 2 || element.classList.contains('selected')) {
-        element.classList.toggle('selected');
-        const emoji = element.textContent;
-        if (element.classList.contains('selected')) {
-          selectedEmojis.push(emoji);
+            // Display the emoji and answer
+            document.getElementById('emoji').textContent = emoji;
+            document.getElementById('answerText').textContent = answerText;
         } else {
-          const index = selectedEmojis.indexOf(emoji);
-          if (index > -1) {
-            selectedEmojis.splice(index, 1);
-          }
+            alert("No data received.");
         }
-      }
-    }
 
-    function saveSelection() {
-      if (selectedEmojis.length === 2) {
-        localStorage.setItem('selectedEmojis', JSON.stringify(selectedEmojis));
-        window.location.href = 'Career.html';
-      } else {
-        alert('Please select exactly 2 emojis.');
-      }
-    }
-  </script>
+        // Function to navigate back to the index page
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+    </script>
 </body>
 </html>
