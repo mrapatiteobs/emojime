@@ -93,7 +93,7 @@ function saveUsername() {
         localStorage.setItem('username', username);
         
         // Send data to the backend
-        fetch('http://localhost:3000/submit-survey', {
+        fetch('https://emojime.onrender.com', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, surveyAnswer, futureAnswer }) // Include new answer
