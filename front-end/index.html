@@ -64,12 +64,14 @@
         <button onclick="saveUsername()">Submit</button>
     </div>
 
-    <p>Do you think AI will improve the future? 🤖</p>
-<select id="surveyAnswer">
-    <option value="Yes">Yes</option>
-    <option value="No">No</option>
-    <option value="Maybe">Maybe</option>
+<p>What comes to your mind when I say the word FUTURE? 🌍</p>
+<select id="futureAnswer">
+    <option value="I don't look forward to it">I don't look forward to it</option>
+    <option value="It's exciting, I can't wait">It's exciting, I can't wait</option>
+    <option value="Neutral">Neutral</option>
+    <option value="I am in charge, I can't wait to write my future">I am in charge, I can't wait to write my future</option>
 </select>
+
 
     <script>
         function saveUsername() {
@@ -82,10 +84,10 @@
                 alert('Please enter your name.');
             }
         }
-
-        function saveUsername() {
+function saveUsername() {
     const username = document.getElementById('usernameInput').value;
     const surveyAnswer = document.getElementById('surveyAnswer').value;
+    const futureAnswer = document.getElementById('futureAnswer').value; // Get the new survey answer
 
     if (username) {
         localStorage.setItem('username', username);
@@ -94,7 +96,7 @@
         fetch('http://localhost:3000/submit-survey', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, surveyAnswer })
+            body: JSON.stringify({ username, surveyAnswer, futureAnswer }) // Include new answer
         })
         .then(response => response.json())
         .then(data => {
@@ -107,6 +109,7 @@
     }
 }
 
+ 
     </script>
 </body>
 </html>
