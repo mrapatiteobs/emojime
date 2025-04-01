@@ -9,7 +9,6 @@
         body {
             background-color: #0d0d0d;
             color: #ffffff;
-           
             font-family: 'Exo', sans-serif;
             display: flex;
             flex-direction: column;
@@ -61,55 +60,51 @@
     <div class="content">
         <p>Please enter your name ✍️ :</p>
         <input type="text" id="usernameInput" placeholder="Your name">
-        <button onclick="saveUsername()">Submit</button>
+        <button onclick="saveUserData()">Submit</button>
     </div>
 
-<p>What comes to your mind when I say the word FUTURE? 🌍</p>
-<select id="futureAnswer">
-    <option value="I don't look forward to it">I don't look forward to it</option>
-    <option value="It's exciting, I can't wait">It's exciting, I can't wait</option>
-    <option value="Neutral">Neutral</option>
-    <option value="I am in charge, I can't wait to write my future">I am in charge, I can't wait to write my future</option>
-</select>
-
+    <p>What comes to your mind when I say the word FUTURE? 🌍</p>
+    <select id="futureAnswer">
+        <option value="I don't look forward to it">I don't look forward to it</option>
+        <option value="It's exciting, I can't wait">It's exciting, I can't wait</option>
+        <option value="Neutral">Neutral</option>
+        <option value="I am in charge, I can't wait to write my future">I am in charge, I can't wait to write my future</option>
+    </select>
 
     <script>
-        function saveUsername() {
+        function saveUserData() {
             const username = document.getElementById('usernameInput').value;
+            const futureAnswer = document.getElementById('futureAnswer').value;
+
+            // Check if the username is filled
             if (username) {
-                localStorage.setItem('username', username);
-                alert(`Hi ${username}!`);
-                window.location.href = 'emoji.html';
+                // Prepare data to send
+                const userData = {
+                    username: username,
+                    futureAnswer: futureAnswer
+                };
+
+                // Send data to the backend (Make sure this URL points to your deployed backend)
+                fetch('https://your-backend-url.onrender.com/submit-survey', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData) // Send the data in the request body
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(`Hi ${username}! Your answer has been submitted successfully.`);
+                    window.location.href = 'emoji.html'; // Redirect to next page after submission
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting your data. Please try again.');
+                });
             } else {
                 alert('Please enter your name.');
             }
         }
-function saveUsername() {
-    const username = document.getElementById('usernameInput').value;
-    const surveyAnswer = document.getElementById('surveyAnswer').value;
-    const futureAnswer = document.getElementById('futureAnswer').value; // Get the new survey answer
-
-    if (username) {
-        localStorage.setItem('username', username);
-        
-        // Send data to the backend
-        fetch('https://emojime.onrender.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, surveyAnswer, futureAnswer }) // Include new answer
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(`Hi ${username}! ${data.message}`);
-            window.location.href = 'emoji.html';
-        })
-        .catch(error => console.error('Error:', error));
-    } else {
-        alert('Please enter your name.');
-    }
-}
-
- 
     </script>
 </body>
 </html>
