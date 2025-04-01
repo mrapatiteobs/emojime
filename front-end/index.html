@@ -186,10 +186,14 @@
                     body: JSON.stringify(userData) // Send the data in the request body
                 })
                 .then(response => response.json())
-                .then(data => {
-                    alert(`Hi ${username}! Your answer has been submitted successfully.`);
-                    window.location.href = 'front-end/emoji.html'; // Redirect to next page after submission
-                })
+
+                    .then(data => {
+    alert(`Hi ${username}! Your answer has been submitted successfully.`);
+    window.location.href = `front-end/emoji.html?username=${encodeURIComponent(username)}&futureAnswer=${encodeURIComponent(futureAnswer)}`; // Redirect with query parameters
+})
+
+                    
+            
                 .catch(error => {
                     console.error('Error:', error);
                     alert('There was an error submitting your data. Please try again.');
